@@ -79,3 +79,22 @@ Ran this to understand data better, and overall more extensive look.
 ```
 
 These supporting reports are saved in `results/audits/`.
+
+## Split Counts (Sections 2(c) and 2(d))
+
+After preparing the aligned features, create reproducible assignments:
+
+```powershell
+.\.venv\Scripts\python.exe src\prepare_shared_features.py
+.\.venv\Scripts\python.exe src\create_checkpoint_splits.py
+```
+
+Read [the final counts and split policy](results/splits/section_2c_final.md).
+`section_2c_preview.md` 
+
+
+```powershell
+.\.venv\Scripts\python.exe check_checkpoint.py --split split.csv.gz --scores scores.csv --threshold YOUR_VALIDATION_THRESHOLD
+```
+
+Baseline training and score generation are still pending.

@@ -1,0 +1,11 @@
+SHARED FEATURE ALIGNMENT | PROJECT 11
+Features: duration_seconds, forward_packets, backward_packets
+CICIDS2017 microsecond duration converted to seconds (/ 1,000,000).
+No rows removed; blank/invalid feature values become NaN for later handling.
+No model training, split, imputation or duplicate cleaning performed here.
+Potential source-tool and packet accounting differences need documenting.
+
+UNSW training: 175,341 records; benign=56,000; attack=119,341; invalid common feature cells={'duration_seconds': 0, 'forward_packets': 0, 'backward_packets': 0}; output=data\processed\aligned\unsw_train.csv.gz
+UNSW official testing: 82,332 records; benign=37,000; attack=45,332; invalid common feature cells={'duration_seconds': 0, 'forward_packets': 0, 'backward_packets': 0}; output=data\processed\aligned\unsw_test.csv.gz
+CICIDS2017 eight days: 2,830,743 records; benign=2,273,097; attack=557,646; invalid common feature cells={'duration_seconds': 0, 'forward_packets': 0, 'backward_packets': 0}; output=data\processed\aligned\cicids2017.csv.gz
+TON_IoT network subset: 211,043 records; benign=50,000; attack=161,043; invalid common feature cells={'duration_seconds': 0, 'forward_packets': 0, 'backward_packets': 0}; output=data\processed\aligned\ton_iot.csv.gz

@@ -1,0 +1,10 @@
+dataset,split,rows,attack,benign
+CICIDS2017,train,0,0,0
+CICIDS2017,validation,0,0,0
+CICIDS2017,test,2830628,557646,2272982
+TON_IoT,train,0,0,0
+TON_IoT,validation,0,0,0
+TON_IoT,test,211043,161043,50000
+UNSW-NB15,train,68048,35851,32197
+UNSW-NB15,validation,17018,8961,8057
+UNSW-NB15,test,82332,45332,37000

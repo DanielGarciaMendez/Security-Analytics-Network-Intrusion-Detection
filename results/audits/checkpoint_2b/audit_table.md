@@ -34,7 +34,7 @@ The main audit table combines the two source files; the **baseline trains on the
 
 **[C] Near-duplicates (primary dataset only).** Sample of **20,000 rows** from the UNSW official **training** file, random seed **42**. Checking for near-duplicates include: Same proto, service, state, spkts and dpkts; duration rounded to 0.01 seconds; total bytes rounded to nearest 100; at least two distinct full 42-feature network patterns within the group. Reported count is the number of **sample rows participating in candidate groups**, not the number of distinct pairs and not confirmation of the same event.
 
-**[D] Repeated entities.** There are not any "repeated entities" for our main dataset UNSW CSV's, as there is a unique ID for every column.
+**[D] Repeated entities.** Unavailable: the prepared UNSW CSVs contain no stable host/session identifiers. The `id` field identifies a row, not a unique host or session; unique row IDs do not establish entity independence.
 
 **[E] Time range.** Unavailable for UNSW because neither loaded, prepared CSV contains a per-record timestamp column.
 

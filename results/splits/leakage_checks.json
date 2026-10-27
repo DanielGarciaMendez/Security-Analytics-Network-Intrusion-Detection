@@ -1,0 +1,21 @@
+{
+  "seed": 42,
+  "validation_target": 0.2,
+  "candidate_group_splits": 256,
+  "original_rows": 3299459,
+  "kept_rows": 3209069,
+  "excluded_rows": 90390,
+  "direct_exact_training_exclusions": 90275,
+  "additional_group_training_exclusions": 0,
+  "eligible_development_rows": 85066,
+  "eligible_connected_groups": 75262,
+  "largest_eligible_group": 48,
+  "actual_validation_fraction": 0.2000564267745045,
+  "checks": {
+    "train_rows_matching_validation": 0,
+    "train_rows_matching_any_test": 0,
+    "near_groups_crossing_train_validation": 0,
+    "near_groups_crossing_development_official_test": 0,
+    "connected_groups_crossing_train_validation": 0
+  }
+}
