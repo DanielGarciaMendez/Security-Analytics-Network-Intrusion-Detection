@@ -1,0 +1,174 @@
+{
+  "train_rows": 175341,
+  "test_rows": 82332,
+  "audit_duplicate_fields": [
+    "dur",
+    "proto",
+    "service",
+    "state",
+    "spkts",
+    "dpkts",
+    "sbytes",
+    "dbytes",
+    "rate",
+    "sttl",
+    "dttl",
+    "sload",
+    "dload",
+    "sloss",
+    "dloss",
+    "sinpkt",
+    "dinpkt",
+    "sjit",
+    "djit",
+    "swin",
+    "stcpb",
+    "dtcpb",
+    "dwin",
+    "tcprtt",
+    "synack",
+    "ackdat",
+    "smean",
+    "dmean",
+    "trans_depth",
+    "response_body_len",
+    "ct_srv_src",
+    "ct_state_ttl",
+    "ct_dst_ltm",
+    "ct_src_dport_ltm",
+    "ct_dst_sport_ltm",
+    "ct_dst_src_ltm",
+    "is_ftp_login",
+    "ct_ftp_cmd",
+    "ct_flw_http_mthd",
+    "ct_src_ltm",
+    "ct_srv_dst",
+    "is_sm_ips_ports",
+    "attack_cat",
+    "label"
+  ],
+  "train_duplicate_occurrences_excluding_id_including_labels": 67601,
+  "test_duplicate_occurrences_excluding_id_including_labels": 26387,
+  "leakage_comparison_fields": [
+    "ackdat",
+    "ct_dst_ltm",
+    "ct_dst_sport_ltm",
+    "ct_dst_src_ltm",
+    "ct_flw_http_mthd",
+    "ct_ftp_cmd",
+    "ct_src_dport_ltm",
+    "ct_src_ltm",
+    "ct_srv_dst",
+    "ct_srv_src",
+    "ct_state_ttl",
+    "dbytes",
+    "dinpkt",
+    "djit",
+    "dload",
+    "dloss",
+    "dmean",
+    "dpkts",
+    "dtcpb",
+    "dttl",
+    "dur",
+    "dwin",
+    "is_ftp_login",
+    "is_sm_ips_ports",
+    "proto",
+    "rate",
+    "response_body_len",
+    "sbytes",
+    "service",
+    "sinpkt",
+    "sjit",
+    "sload",
+    "sloss",
+    "smean",
+    "spkts",
+    "state",
+    "stcpb",
+    "sttl",
+    "swin",
+    "synack",
+    "tcprtt",
+    "trans_depth"
+  ],
+  "train_rows_matching_official_test_on_features": 10279,
+  "official_test_rows_matching_train_on_features": 8541,
+  "train_feature_duplicate_occurrences": 74301,
+  "test_feature_duplicate_occurrences": 28386,
+  "train_key_invalids": {
+    "dur": {
+      "missing": 0,
+      "non_numeric": 0,
+      "infinite": 0
+    },
+    "spkts": {
+      "missing": 0,
+      "non_numeric": 0,
+      "infinite": 0
+    },
+    "dpkts": {
+      "missing": 0,
+      "non_numeric": 0,
+      "infinite": 0
+    },
+    "sbytes": {
+      "missing": 0,
+      "non_numeric": 0,
+      "infinite": 0
+    },
+    "dbytes": {
+      "missing": 0,
+      "non_numeric": 0,
+      "infinite": 0
+    },
+    "rate": {
+      "missing": 0,
+      "non_numeric": 0,
+      "infinite": 0
+    }
+  },
+  "test_key_invalids": {
+    "dur": {
+      "missing": 0,
+      "non_numeric": 0,
+      "infinite": 0
+    },
+    "spkts": {
+      "missing": 0,
+      "non_numeric": 0,
+      "infinite": 0
+    },
+    "dpkts": {
+      "missing": 0,
+      "non_numeric": 0,
+      "infinite": 0
+    },
+    "sbytes": {
+      "missing": 0,
+      "non_numeric": 0,
+      "infinite": 0
+    },
+    "dbytes": {
+      "missing": 0,
+      "non_numeric": 0,
+      "infinite": 0
+    },
+    "rate": {
+      "missing": 0,
+      "non_numeric": 0,
+      "infinite": 0
+    }
+  },
+  "near_duplicate_screen": {
+    "sample_rows": 20000,
+    "rows_in_candidate_groups": 14431,
+    "different_feature_patterns_in_each_group_required": true,
+    "rule": "Same proto, service, state, spkts, dpkts; duration rounded to 0.01 s; total bytes rounded to nearest 100; differing full input features",
+    "note": "A screening heuristic. Some candidates may be unrelated flows. This does not establish cross-split near-duplicate leakage."
+  },
+  "entity_check": "Unavailable: the prepared UNSW CSVs do not contain source/destination host IDs; 'id' is a row ID, ct_* fields are aggregate counts, not stable host identities.",
+  "time_check": "Unavailable: these prepared UNSW CSVs have no timestamp column. Document publisher collection period separately.",
+  "action": "Do not train yet. If overlaps exist, preserve official test; exclude/move matching training rows, document counts, then split training by feature fingerprint groups and check both boundaries again."
+}

@@ -1,0 +1,86 @@
+{
+  "files": [
+    {
+      "file": "Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv",
+      "rows": 225745,
+      "matches_in_earlier_files_128bit_fingerprint": 0
+    },
+    {
+      "file": "Friday-WorkingHours-Afternoon-PortScan.pcap_ISCX.csv",
+      "rows": 286467,
+      "matches_in_earlier_files_128bit_fingerprint": 3851
+    },
+    {
+      "file": "Friday-WorkingHours-Morning.pcap_ISCX.csv",
+      "rows": 191033,
+      "matches_in_earlier_files_128bit_fingerprint": 8232
+    },
+    {
+      "file": "Monday-WorkingHours.pcap_ISCX.csv",
+      "rows": 529918,
+      "matches_in_earlier_files_128bit_fingerprint": 2768
+    },
+    {
+      "file": "Thursday-WorkingHours-Afternoon-Infilteration.pcap_ISCX.csv",
+      "rows": 288602,
+      "matches_in_earlier_files_128bit_fingerprint": 14591
+    },
+    {
+      "file": "Thursday-WorkingHours-Morning-WebAttacks.pcap_ISCX.csv",
+      "rows": 170366,
+      "matches_in_earlier_files_128bit_fingerprint": 12602
+    },
+    {
+      "file": "Tuesday-WorkingHours.pcap_ISCX.csv",
+      "rows": 445909,
+      "matches_in_earlier_files_128bit_fingerprint": 19595
+    },
+    {
+      "file": "Wednesday-workingHours.pcap_ISCX.csv",
+      "rows": 692703,
+      "matches_in_earlier_files_128bit_fingerprint": 37727
+    }
+  ],
+  "cross_file_duplicate_candidate_occurrences": 99366,
+  "cross_file_method": "Two 64-bit hashes of identical raw string-valued 79-column records, including Label. Cross-file only; within-file duplicates reported separately by audit_all.py. Fingerprint collisions theoretically possible.",
+  "selected_numeric_field_checks": {
+    "Flow Duration": {
+      "missing_or_blank": 0,
+      "nonnumeric_nonblank": 0,
+      "infinite": 0
+    },
+    "Total Fwd Packets": {
+      "missing_or_blank": 0,
+      "nonnumeric_nonblank": 0,
+      "infinite": 0
+    },
+    "Total Backward Packets": {
+      "missing_or_blank": 0,
+      "nonnumeric_nonblank": 0,
+      "infinite": 0
+    },
+    "Total Length of Fwd Packets": {
+      "missing_or_blank": 0,
+      "nonnumeric_nonblank": 0,
+      "infinite": 0
+    },
+    "Total Length of Bwd Packets": {
+      "missing_or_blank": 0,
+      "nonnumeric_nonblank": 0,
+      "infinite": 0
+    },
+    "Flow Bytes/s": {
+      "missing_or_blank": 1358,
+      "nonnumeric_nonblank": 0,
+      "infinite": 1509
+    },
+    "Flow Packets/s": {
+      "missing_or_blank": 0,
+      "nonnumeric_nonblank": 0,
+      "infinite": 2867
+    }
+  },
+  "entity_check": "Unavailable from these ML CSV files: no source/destination IP or host ID columns.",
+  "time_check": "Unavailable from these ML CSV files: no explicit per-row timestamp. Day filenames indicate scenario/day, not exact time range.",
+  "action": "Document any invalid/inf values. Later align units, check shared-feature duplicates against UNSW train using the FINAL feature map, and choose/document a fixed test sample if necessary."
+}

@@ -1,0 +1,328 @@
+{
+  "unsw": {
+    "train_rows": 175341,
+    "test_rows": 82332,
+    "audit_duplicate_fields": [
+      "dur",
+      "proto",
+      "service",
+      "state",
+      "spkts",
+      "dpkts",
+      "sbytes",
+      "dbytes",
+      "rate",
+      "sttl",
+      "dttl",
+      "sload",
+      "dload",
+      "sloss",
+      "dloss",
+      "sinpkt",
+      "dinpkt",
+      "sjit",
+      "djit",
+      "swin",
+      "stcpb",
+      "dtcpb",
+      "dwin",
+      "tcprtt",
+      "synack",
+      "ackdat",
+      "smean",
+      "dmean",
+      "trans_depth",
+      "response_body_len",
+      "ct_srv_src",
+      "ct_state_ttl",
+      "ct_dst_ltm",
+      "ct_src_dport_ltm",
+      "ct_dst_sport_ltm",
+      "ct_dst_src_ltm",
+      "is_ftp_login",
+      "ct_ftp_cmd",
+      "ct_flw_http_mthd",
+      "ct_src_ltm",
+      "ct_srv_dst",
+      "is_sm_ips_ports",
+      "attack_cat",
+      "label"
+    ],
+    "train_duplicate_occurrences_excluding_id_including_labels": 67601,
+    "test_duplicate_occurrences_excluding_id_including_labels": 26387,
+    "leakage_comparison_fields": [
+      "ackdat",
+      "ct_dst_ltm",
+      "ct_dst_sport_ltm",
+      "ct_dst_src_ltm",
+      "ct_flw_http_mthd",
+      "ct_ftp_cmd",
+      "ct_src_dport_ltm",
+      "ct_src_ltm",
+      "ct_srv_dst",
+      "ct_srv_src",
+      "ct_state_ttl",
+      "dbytes",
+      "dinpkt",
+      "djit",
+      "dload",
+      "dloss",
+      "dmean",
+      "dpkts",
+      "dtcpb",
+      "dttl",
+      "dur",
+      "dwin",
+      "is_ftp_login",
+      "is_sm_ips_ports",
+      "proto",
+      "rate",
+      "response_body_len",
+      "sbytes",
+      "service",
+      "sinpkt",
+      "sjit",
+      "sload",
+      "sloss",
+      "smean",
+      "spkts",
+      "state",
+      "stcpb",
+      "sttl",
+      "swin",
+      "synack",
+      "tcprtt",
+      "trans_depth"
+    ],
+    "train_rows_matching_official_test_on_features": 10279,
+    "official_test_rows_matching_train_on_features": 8541,
+    "train_feature_duplicate_occurrences": 74301,
+    "test_feature_duplicate_occurrences": 28386,
+    "train_key_invalids": {
+      "dur": {
+        "missing": 0,
+        "non_numeric": 0,
+        "infinite": 0
+      },
+      "spkts": {
+        "missing": 0,
+        "non_numeric": 0,
+        "infinite": 0
+      },
+      "dpkts": {
+        "missing": 0,
+        "non_numeric": 0,
+        "infinite": 0
+      },
+      "sbytes": {
+        "missing": 0,
+        "non_numeric": 0,
+        "infinite": 0
+      },
+      "dbytes": {
+        "missing": 0,
+        "non_numeric": 0,
+        "infinite": 0
+      },
+      "rate": {
+        "missing": 0,
+        "non_numeric": 0,
+        "infinite": 0
+      }
+    },
+    "test_key_invalids": {
+      "dur": {
+        "missing": 0,
+        "non_numeric": 0,
+        "infinite": 0
+      },
+      "spkts": {
+        "missing": 0,
+        "non_numeric": 0,
+        "infinite": 0
+      },
+      "dpkts": {
+        "missing": 0,
+        "non_numeric": 0,
+        "infinite": 0
+      },
+      "sbytes": {
+        "missing": 0,
+        "non_numeric": 0,
+        "infinite": 0
+      },
+      "dbytes": {
+        "missing": 0,
+        "non_numeric": 0,
+        "infinite": 0
+      },
+      "rate": {
+        "missing": 0,
+        "non_numeric": 0,
+        "infinite": 0
+      }
+    },
+    "near_duplicate_screen": {
+      "sample_rows": 20000,
+      "rows_in_candidate_groups": 14431,
+      "different_feature_patterns_in_each_group_required": true,
+      "rule": "Same proto, service, state, spkts, dpkts; duration rounded to 0.01 s; total bytes rounded to nearest 100; differing full input features",
+      "note": "A screening heuristic. Some candidates may be unrelated flows. This does not establish cross-split near-duplicate leakage."
+    },
+    "entity_check": "Unavailable: the prepared UNSW CSVs do not contain source/destination host IDs; 'id' is a row ID, ct_* fields are aggregate counts, not stable host identities.",
+    "time_check": "Unavailable: these prepared UNSW CSVs have no timestamp column. Document publisher collection period separately.",
+    "action": "Do not train yet. If overlaps exist, preserve official test; exclude/move matching training rows, document counts, then split training by feature fingerprint groups and check both boundaries again."
+  },
+  "cicids": {
+    "files": [
+      {
+        "file": "Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv",
+        "rows": 225745,
+        "matches_in_earlier_files_128bit_fingerprint": 0
+      },
+      {
+        "file": "Friday-WorkingHours-Afternoon-PortScan.pcap_ISCX.csv",
+        "rows": 286467,
+        "matches_in_earlier_files_128bit_fingerprint": 3851
+      },
+      {
+        "file": "Friday-WorkingHours-Morning.pcap_ISCX.csv",
+        "rows": 191033,
+        "matches_in_earlier_files_128bit_fingerprint": 8232
+      },
+      {
+        "file": "Monday-WorkingHours.pcap_ISCX.csv",
+        "rows": 529918,
+        "matches_in_earlier_files_128bit_fingerprint": 2768
+      },
+      {
+        "file": "Thursday-WorkingHours-Afternoon-Infilteration.pcap_ISCX.csv",
+        "rows": 288602,
+        "matches_in_earlier_files_128bit_fingerprint": 14591
+      },
+      {
+        "file": "Thursday-WorkingHours-Morning-WebAttacks.pcap_ISCX.csv",
+        "rows": 170366,
+        "matches_in_earlier_files_128bit_fingerprint": 12602
+      },
+      {
+        "file": "Tuesday-WorkingHours.pcap_ISCX.csv",
+        "rows": 445909,
+        "matches_in_earlier_files_128bit_fingerprint": 19595
+      },
+      {
+        "file": "Wednesday-workingHours.pcap_ISCX.csv",
+        "rows": 692703,
+        "matches_in_earlier_files_128bit_fingerprint": 37727
+      }
+    ],
+    "cross_file_duplicate_candidate_occurrences": 99366,
+    "cross_file_method": "Two 64-bit hashes of identical raw string-valued 79-column records, including Label. Cross-file only; within-file duplicates reported separately by audit_all.py. Fingerprint collisions theoretically possible.",
+    "selected_numeric_field_checks": {
+      "Flow Duration": {
+        "missing_or_blank": 0,
+        "nonnumeric_nonblank": 0,
+        "infinite": 0
+      },
+      "Total Fwd Packets": {
+        "missing_or_blank": 0,
+        "nonnumeric_nonblank": 0,
+        "infinite": 0
+      },
+      "Total Backward Packets": {
+        "missing_or_blank": 0,
+        "nonnumeric_nonblank": 0,
+        "infinite": 0
+      },
+      "Total Length of Fwd Packets": {
+        "missing_or_blank": 0,
+        "nonnumeric_nonblank": 0,
+        "infinite": 0
+      },
+      "Total Length of Bwd Packets": {
+        "missing_or_blank": 0,
+        "nonnumeric_nonblank": 0,
+        "infinite": 0
+      },
+      "Flow Bytes/s": {
+        "missing_or_blank": 1358,
+        "nonnumeric_nonblank": 0,
+        "infinite": 1509
+      },
+      "Flow Packets/s": {
+        "missing_or_blank": 0,
+        "nonnumeric_nonblank": 0,
+        "infinite": 2867
+      }
+    },
+    "entity_check": "Unavailable from these ML CSV files: no source/destination IP or host ID columns.",
+    "time_check": "Unavailable from these ML CSV files: no explicit per-row timestamp. Day filenames indicate scenario/day, not exact time range.",
+    "action": "Document any invalid/inf values. Later align units, check shared-feature duplicates against UNSW train using the FINAL feature map, and choose/document a fixed test sample if necessary."
+  },
+  "ton": {
+    "file": "data\\raw\\ton_iot\\train_test_network.csv",
+    "rows": 211043,
+    "columns": 44,
+    "label_values": {
+      "1": 161043,
+      "0": 50000
+    },
+    "selected_numeric_field_checks": {
+      "duration": {
+        "missing": 0,
+        "non_numeric": 0,
+        "infinite": 0
+      },
+      "src_bytes": {
+        "missing": 0,
+        "non_numeric": 0,
+        "infinite": 0
+      },
+      "dst_bytes": {
+        "missing": 0,
+        "non_numeric": 0,
+        "infinite": 0
+      },
+      "src_pkts": {
+        "missing": 0,
+        "non_numeric": 0,
+        "infinite": 0
+      },
+      "dst_pkts": {
+        "missing": 0,
+        "non_numeric": 0,
+        "infinite": 0
+      },
+      "src_port": {
+        "missing": 0,
+        "non_numeric": 0,
+        "infinite": 0
+      },
+      "dst_port": {
+        "missing": 0,
+        "non_numeric": 0,
+        "infinite": 0
+      }
+    },
+    "repeated_entity_counts": {
+      "src_ip": {
+        "distinct_values": 51,
+        "values_repeated_at_least_twice": 49,
+        "rows_belonging_to_repeated_values": 211041
+      },
+      "dst_ip": {
+        "distinct_values": 753,
+        "values_repeated_at_least_twice": 574,
+        "rows_belonging_to_repeated_values": 210864
+      },
+      "source_destination_ip_pair": {
+        "distinct_values": 1026,
+        "values_repeated_at_least_twice": 754,
+        "rows_belonging_to_repeated_values": 210771
+      }
+    },
+    "exact_duplicate_occurrences_all_columns": 20569,
+    "time_check": "Unavailable: this downloaded CSV has no timestamp column; collection period belongs in dataset provenance.",
+    "action": "Use this specific 211,043-row subset; do not describe it as the entire TON_IoT collection. If testing only, repeated host groups matter for interpreting independence, not for model-fitting splits on TON_IoT."
+  }
+}
