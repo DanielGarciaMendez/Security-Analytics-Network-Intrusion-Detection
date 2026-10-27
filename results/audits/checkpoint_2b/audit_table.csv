@@ -1,0 +1,11 @@
+﻿Audit check,UNSW-NB15,CICIDS2017,TON_IoT
+Rows,"257,673","2,830,743","211,043"
+Columns,45,79,44
+Benign count (%),"93,000 (36.09%)","2,273,097 (80.30%)","50,000 (23.69%)"
+Malicious count (%),"164,673 (63.91%)","557,646 (19.70%)","161,043 (76.31%)"
+Missing target values,0,0,0
+Missing key features,0 [A],—,—
+Exact duplicates,"94,928 [B]","308,381 [B]","20,569 [B]"
+Near-duplicates,"14,431 candidate rows / 20,000 sampled [C]",—,—
+Repeated entities,Unavailable — no host IDs [D],—,—
+Time range,Unavailable — no timestamp [E],Not required [F],Not required [F]

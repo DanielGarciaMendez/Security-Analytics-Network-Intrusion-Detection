@@ -1,0 +1,17 @@
+﻿dataset,field,missing,nonnumeric_nonmissing,infinite
+UNSW-NB15,dur,0,0,0
+UNSW-NB15,spkts,0,0,0
+UNSW-NB15,dpkts,0,0,0
+UNSW-NB15,sbytes,0,0,0
+UNSW-NB15,dbytes,0,0,0
+UNSW-NB15,rate,0,0,0
+CICIDS2017,Flow Duration,0,0,0
+CICIDS2017,Total Fwd Packets,0,0,0
+CICIDS2017,Total Backward Packets,0,0,0
+CICIDS2017,Flow Bytes/s,1358,0,1509
+CICIDS2017,Flow Packets/s,0,0,2867
+TON_IoT,duration,0,0,0
+TON_IoT,src_pkts,0,0,0
+TON_IoT,dst_pkts,0,0,0
+TON_IoT,src_bytes,0,0,0
+TON_IoT,dst_bytes,0,0,0

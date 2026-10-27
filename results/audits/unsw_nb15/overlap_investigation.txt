@@ -1,0 +1,74 @@
+===========================================================================
+UNSW-NB15 | TRAIN / OFFICIAL-TEST OVERLAP INVESTIGATION
+===========================================================================
+
+PURPOSE: Find exact feature-pattern overlap and label disagreements.
+ORIGINAL DATA: No records were deleted, modified, or split by this script.
+
+1. INPUT DATA
+   Training records:                  175,341
+   Official testing records:          82,332
+   Network features compared:         42
+   Excluded from equality:           id, label, attack_cat
+
+2. WITHIN-FILE DUPLICATES (NOT THE SAME AS CROSS-FILE OVERLAP)
+   Train duplicates excluding id:     67,601
+   Test duplicates excluding id:      26,387
+   Train duplicate network features:  74,301
+   Test duplicate network features:   28,386
+
+3. TRAIN / OFFICIAL-TEST OVERLAP
+   Distinct feature patterns shared:  1,302
+   Training rows matching test:       10,279 (5.86%)
+   Testing rows matching training:    8,541 (10.37%)
+   Each count is a count of ROWS, not unique patterns.
+   Do NOT add train and test counts together as unique duplicates.
+
+4. LABEL CONSISTENCY
+   Feature patterns with both labels anywhere:  279
+   Patterns with opposite labels across files: 279
+   Train feature patterns with both labels:    229
+   Test feature patterns with both labels:     6
+   Opposite labels do not automatically mean either dataset is wrong.
+
+5. LABEL COUNTS AMONG OVERLAPPING ROWS
+   Training / benign: 1,739
+   Training / attack: 8,540
+   Testing  / benign: 1,472
+   Testing  / attack: 7,069
+
+6. ATTACK CATEGORIES IN OVERLAPPING ROWS (TRAIN)
+   Generic                       3,774
+   Reconnaissance                2,411
+   Normal                        1,739
+   Exploits                        775
+   Fuzzers                         691
+   DoS                             402
+   Backdoor                        285
+   Analysis                        178
+   Shellcode                        23
+   Worms                             1
+
+7. ATTACK CATEGORIES IN OVERLAPPING ROWS (OFFICIAL TEST)
+   DoS                           2,004
+   Exploits                      1,802
+   Generic                       1,722
+   Normal                        1,472
+   Reconnaissance                1,138
+   Fuzzers                         261
+   Analysis                        125
+   Shellcode                        13
+   Backdoor                          4
+
+8. INSPECTABLE EVIDENCE
+   overlap_examples.csv:              25 most frequent shared feature patterns
+   conflicting_label_examples.csv:    up to 25 patterns with opposite labels across files
+   overlapping_row_ids.csv:           original row IDs affected (both partitions)
+
+9. INTERPRETATION AND LIMITATIONS
+   These are exact matches of all available NETWORK FEATURE values.
+   Matching features do NOT prove the records are the same real event.
+   A matching pattern in train and test can inflate held-out evaluation.
+   No cleaning decision has yet been made or implemented.
+   The check MUST be repeated after choosing final aligned model features.
+   Near-duplicate detection and group-aware train/validation splitting are separate tasks.
