@@ -11,8 +11,6 @@ Inputs (read only):
 
 Outputs under results/audits/checkpoint_2b/:
     audit_table.md             (copy into checkpoint)
-    audit_table.html           (open in browser / print)
-    audit_table.csv            (table cells as CSV)
     audit_by_file.csv          (one row per input CSV)
     original_label_counts.csv  (original labels, incl. CIC attack categories)
     key_feature_quality.csv   (missing, nonnumeric and infinite values)
@@ -26,7 +24,6 @@ from __future__ import annotations
 import argparse
 from collections import Counter
 import csv
-from html import escape
 import json
 from pathlib import Path
 
@@ -257,8 +254,6 @@ def table_rows(s: dict, near: dict) -> list[tuple[str, str, str, str]]:
 def output_reports(output: Path, stats: dict, by_file: list[dict], near: dict, chunk_size: int) -> None:
     output.mkdir(parents=True, exist_ok=True)
     matrix = table_rows(stats, near)
-    flat = [{"Audit check": a, "UNSW-NB15": b, "CICIDS2017": c, "TON_IoT": d} for a, b, c, d in matrix]
-    write_csv(output / "audit_table.csv", ["Audit check", "UNSW-NB15", "CICIDS2017", "TON_IoT"], flat)
     write_csv(output / "audit_by_file.csv", ["dataset", "file", "rows", "columns", "target", "missing_target", "duplicate_occurrences_within_file", "rows_matching_previous_files", "class_label_counts"], by_file)
     label_rows = []
     feature_rows = []
@@ -299,24 +294,10 @@ def output_reports(output: Path, stats: dict, by_file: list[dict], near: dict, c
                "", "**Status:** This is the pre-cleaning audit. Feature alignment, split assignments, row removals and final leakage checks are separate steps (Sections 2(c) and 2(d)).", ""])
     (output / "audit_table.md").write_text("\n".join(md), encoding="utf-8")
 
-    trs = "\n".join("<tr>" + "".join(f"<td>{escape(str(cell))}</td>" for cell in row) + "</tr>" for row in matrix)
-    footnotes = "\n".join(f"<p>{escape(line)}</p>" for line in md if line.startswith("**[") or line.startswith("**Status:"))
-    html = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Section 2(b) — Dataset Audit</title>
-<style>body{{font:14px/1.5 system-ui,Arial,sans-serif;color:#182536;margin:40px auto;max-width:1100px;padding:0 24px}}
-h1{{font-size:25px}}table{{border-collapse:collapse;width:100%;font-size:13px}}th,td{{border-bottom:1px solid #d6dce5;padding:10px 12px;text-align:left;vertical-align:top}}th{{background:#edf3f8}}
-tr:nth-child(even){{background:#fafbfc}}.note{{font-size:12px;color:#505d69}}@media print{{body{{margin:12mm;max-width:none}}table{{font-size:10px}}td,th{{padding:6px}}}}</style></head><body>
-<h1>Section 2(b) — Dataset Audit</h1>
-<p><b>Primary dataset:</b> UNSW-NB15 (Random Forest trains on the official training CSV).</p>
-<p><b>Scope:</b> Original loaded data before cleaning. UNSW-NB15 includes official train and test files.</p>
-<table><thead><tr><th>Audit check</th><th>UNSW-NB15</th><th>CICIDS2017</th><th>TON_IoT</th></tr></thead><tbody>{trs}</tbody></table>
-<div class="note"><h2>Definitions and limitations</h2><p><b>[A]</b> UNSW key fields: dur, spkts, dpkts, sbytes, dbytes, rate.</p>
-<p><b>[B]</b> Exact duplicates: repeated occurrences across each dataset's loaded files, comparing all columns except id for UNSW; all columns for CICIDS2017 and TON_IoT. Two independent 64-bit row fingerprints; collisions theoretically possible.</p>
-<p><b>[C]</b> Candidate near-duplicates use a {near['sample_size']:,}-row UNSW training sample (seed {near['seed']}). Same protocol, service, state and directional packets; duration rounded to 0.01 s, total bytes to 100; at least two different full network patterns. Count is sample rows in candidate groups.</p>
-<p><b>[D]</b> Repeated entities unavailable: no host/user/device identifier in prepared UNSW CSVs (id is a row number).</p>
-<p><b>[E]</b> Primary dataset time range unavailable: no timestamp column in loaded UNSW CSV files.</p>
-<p><b>[F]</b> External time ranges not required: dataset-boundary split, not time split.</p>
-<p><b>Pre-cleaning audit only.</b> Splitting, cleaning and final leakage verification are not complete.</p></div></body></html>"""
-    (output / "audit_table.html").write_text(html, encoding="utf-8")
+    # Clean up outdated presentation-only outputs from older script versions.
+    # Do not delete input data or any supporting evidence files.
+    for old_name in ("audit_table.html", "audit_table.csv"):
+        (output / old_name).unlink(missing_ok=True)
 
     serializable = {}
     for name, st in stats.items():
@@ -334,7 +315,7 @@ tr:nth-child(even){{background:#fafbfc}}.note{{font-size:12px;color:#505d69}}@me
     for a, b, c, d in matrix:
         print(f"{a:27} | {b:37} | {c:20} | {d}")
     print(f"\nReports written to: {output.relative_to(ROOT) if output.is_relative_to(ROOT) else output}")
-    print("Open audit_table.html for a clean printable table or audit_table.md for Markdown.")
+    print("Open audit_table.md for the checkpoint table and methods.")
 
 
 def main() -> None:

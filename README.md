@@ -38,29 +38,44 @@ Download the network traffic train/test CSV subset containing `train_test_networ
 
 Place the file in `data/raw/ton_iot/`.
 
-### Running the Data Audits
+## Setup
 
-Install the required Python packages:
-
-```powershell
-python -m pip install -r requirements.txt
-```
-
-Execute the automated dataset audit:
+Run these commands from the repository root in Windows PowerShell
 
 ```powershell
-python src/audit_all.py
+py -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
 ```
 
-Audit results will be generated in `results/audits/`.
+## Data Audits
+
+The **primary dataset is UNSW-NB15** (the Random Forest training source). The audit (auditoverview2b.py) script reads the original UNSW-NB15 training and testing files, all eight CICIDS2017 CSVs, and the TON_IoT network CSV
+
+Run the complete Section 2(b) audit:
+
+```powershell
+.\.venv\Scripts\python.exe src\auditoverview2b.py
+```
+
+**Main report:** [Section 2(b) — Dataset Audit Table](results/audits/checkpoint_2b/audit_table.md)
+
+The audit script saves its reports in `results/audits/checkpoint_2b/`.
+
+| File | Purpose |
+|---|---|
+| [`audit_table.md`](results/audits/checkpoint_2b/audit_table.md) | Markdown table for the checkpoint, with definitions on how we considered key features, duplicat finding, etc |
+| `audit_by_file.csv` | Per-file dimensions, labels, and duplicate statistics. |
+| `original_label_counts.csv` | Counts of the original labels, including individual CICIDS2017 attack types. |
+| `key_feature_quality.csv` | Missing, nonnumeric, and infinite measurements in inspected features. |
+| `audit_details.json` | Reproducible methods, detailed results, and limitations. |
 
 
-## Run the Audits
-From the repository root, with the local virtual environment created and dependencies installed:
+### Detailed Per-File Audits 
+
+Ran this to understand data better, and overall more extensive look.
 
 ```powershell
 .\.venv\Scripts\python.exe src\audit_all.py
 ```
 
-The audit script saves its reports in `results/audits/`.
-
+These supporting reports are saved in `results/audits/`.
