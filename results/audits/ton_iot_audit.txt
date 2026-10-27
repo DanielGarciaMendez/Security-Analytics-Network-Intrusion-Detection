@@ -1,0 +1,62 @@
+DATASET: TON_IoT
+FILE: data\raw\ton_iot\train_test_network.csv
+ROWS: 211,043
+COLUMNS: 44
+COLUMN NAMES: ['src_ip', 'src_port', 'dst_ip', 'dst_port', 'proto', 'service', 'duration', 'src_bytes', 'dst_bytes', 'conn_state', 'missed_bytes', 'src_pkts', 'src_ip_bytes', 'dst_pkts', 'dst_ip_bytes', 'dns_query', 'dns_qclass', 'dns_qtype', 'dns_rcode', 'dns_AA', 'dns_RD', 'dns_RA', 'dns_rejected', 'ssl_version', 'ssl_cipher', 'ssl_resumed', 'ssl_established', 'ssl_subject', 'ssl_issuer', 'http_trans_depth', 'http_method', 'http_uri', 'http_version', 'http_request_body_len', 'http_response_body_len', 'http_status_code', 'http_user_agent', 'http_orig_mime_types', 'http_resp_mime_types', 'weird_name', 'weird_addl', 'weird_notice', 'label', 'type']
+TARGET COLUMN: label
+ORIGINAL LABEL COUNTS (do not assume all unknown labels are benign):
+  1: 161,043 (76.31%)
+  0: 50,000 (23.69%)
+MISSING TARGET VALUES: 0
+MISSING VALUES (ALL COLUMNS): 0
+MISSING BY COLUMN:
+  src_ip: 0
+  src_port: 0
+  dst_ip: 0
+  dst_port: 0
+  proto: 0
+  service: 0
+  duration: 0
+  src_bytes: 0
+  dst_bytes: 0
+  conn_state: 0
+  missed_bytes: 0
+  src_pkts: 0
+  src_ip_bytes: 0
+  dst_pkts: 0
+  dst_ip_bytes: 0
+  dns_query: 0
+  dns_qclass: 0
+  dns_qtype: 0
+  dns_rcode: 0
+  dns_AA: 0
+  dns_RD: 0
+  dns_RA: 0
+  dns_rejected: 0
+  ssl_version: 0
+  ssl_cipher: 0
+  ssl_resumed: 0
+  ssl_established: 0
+  ssl_subject: 0
+  ssl_issuer: 0
+  http_trans_depth: 0
+  http_method: 0
+  http_uri: 0
+  http_version: 0
+  http_request_body_len: 0
+  http_response_body_len: 0
+  http_status_code: 0
+  http_user_agent: 0
+  http_orig_mime_types: 0
+  http_resp_mime_types: 0
+  weird_name: 0
+  weird_addl: 0
+  weird_notice: 0
+  label: 0
+  type: 0
+MISSING KEY FEATURES (where present): {'proto': 0}
+EXACT DUPLICATE ROWS INCLUDING IDENTIFIERS (within file): 20,569
+IDENTIFIER FIELDS EXCLUDED FOR SECOND DUPLICATE CHECK: []
+DUPLICATE ROWS EXCLUDING IDENTIFIERS (within file): 20,569
+NOTE: Repeated flow summaries can represent distinct events. Do not delete blindly.
+NOTE: Cross-file duplicates, near-duplicates, entity repeats, timestamps and leakage require further checks.

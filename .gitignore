@@ -1,0 +1,15 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
+
+# Python environment
+.venv/
+__pycache__/
+*.pyc
+
+# Raw downloaded datasets
+data/raw/
+
+# Local model files
+models/
+
+# Temporary files
+.ipynb_checkpoints/
