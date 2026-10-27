@@ -1,99 +1,73 @@
-DATASET: CICIDS2017
-FILE: data\raw\cicids2017\Thursday-WorkingHours-Morning-WebAttacks.pcap_ISCX.csv
-ROWS: 170,366
-COLUMNS: 79
-COLUMN NAMES: ['Destination Port', 'Flow Duration', 'Total Fwd Packets', 'Total Backward Packets', 'Total Length of Fwd Packets', 'Total Length of Bwd Packets', 'Fwd Packet Length Max', 'Fwd Packet Length Min', 'Fwd Packet Length Mean', 'Fwd Packet Length Std', 'Bwd Packet Length Max', 'Bwd Packet Length Min', 'Bwd Packet Length Mean', 'Bwd Packet Length Std', 'Flow Bytes/s', 'Flow Packets/s', 'Flow IAT Mean', 'Flow IAT Std', 'Flow IAT Max', 'Flow IAT Min', 'Fwd IAT Total', 'Fwd IAT Mean', 'Fwd IAT Std', 'Fwd IAT Max', 'Fwd IAT Min', 'Bwd IAT Total', 'Bwd IAT Mean', 'Bwd IAT Std', 'Bwd IAT Max', 'Bwd IAT Min', 'Fwd PSH Flags', 'Bwd PSH Flags', 'Fwd URG Flags', 'Bwd URG Flags', 'Fwd Header Length', 'Bwd Header Length', 'Fwd Packets/s', 'Bwd Packets/s', 'Min Packet Length', 'Max Packet Length', 'Packet Length Mean', 'Packet Length Std', 'Packet Length Variance', 'FIN Flag Count', 'SYN Flag Count', 'RST Flag Count', 'PSH Flag Count', 'ACK Flag Count', 'URG Flag Count', 'CWE Flag Count', 'ECE Flag Count', 'Down/Up Ratio', 'Average Packet Size', 'Avg Fwd Segment Size', 'Avg Bwd Segment Size', 'Fwd Header Length.1', 'Fwd Avg Bytes/Bulk', 'Fwd Avg Packets/Bulk', 'Fwd Avg Bulk Rate', 'Bwd Avg Bytes/Bulk', 'Bwd Avg Packets/Bulk', 'Bwd Avg Bulk Rate', 'Subflow Fwd Packets', 'Subflow Fwd Bytes', 'Subflow Bwd Packets', 'Subflow Bwd Bytes', 'Init_Win_bytes_forward', 'Init_Win_bytes_backward', 'act_data_pkt_fwd', 'min_seg_size_forward', 'Active Mean', 'Active Std', 'Active Max', 'Active Min', 'Idle Mean', 'Idle Std', 'Idle Max', 'Idle Min', 'Label']
-TARGET COLUMN: Label
-ORIGINAL LABEL COUNTS (do not assume all unknown labels are benign):
-  BENIGN: 168,186 (98.72%)
-  Web Attack � Brute Force: 1,507 (0.88%)
-  Web Attack � XSS: 652 (0.38%)
-  Web Attack � Sql Injection: 21 (0.01%)
-MISSING TARGET VALUES: 0
-MISSING VALUES (ALL COLUMNS): 20
-MISSING BY COLUMN:
-  Destination Port: 0
-  Flow Duration: 0
-  Total Fwd Packets: 0
-  Total Backward Packets: 0
-  Total Length of Fwd Packets: 0
-  Total Length of Bwd Packets: 0
-  Fwd Packet Length Max: 0
-  Fwd Packet Length Min: 0
-  Fwd Packet Length Mean: 0
-  Fwd Packet Length Std: 0
-  Bwd Packet Length Max: 0
-  Bwd Packet Length Min: 0
-  Bwd Packet Length Mean: 0
-  Bwd Packet Length Std: 0
-  Flow Bytes/s: 20
-  Flow Packets/s: 0
-  Flow IAT Mean: 0
-  Flow IAT Std: 0
-  Flow IAT Max: 0
-  Flow IAT Min: 0
-  Fwd IAT Total: 0
-  Fwd IAT Mean: 0
-  Fwd IAT Std: 0
-  Fwd IAT Max: 0
-  Fwd IAT Min: 0
-  Bwd IAT Total: 0
-  Bwd IAT Mean: 0
-  Bwd IAT Std: 0
-  Bwd IAT Max: 0
-  Bwd IAT Min: 0
-  Fwd PSH Flags: 0
-  Bwd PSH Flags: 0
-  Fwd URG Flags: 0
-  Bwd URG Flags: 0
-  Fwd Header Length: 0
-  Bwd Header Length: 0
-  Fwd Packets/s: 0
-  Bwd Packets/s: 0
-  Min Packet Length: 0
-  Max Packet Length: 0
-  Packet Length Mean: 0
-  Packet Length Std: 0
-  Packet Length Variance: 0
-  FIN Flag Count: 0
-  SYN Flag Count: 0
-  RST Flag Count: 0
-  PSH Flag Count: 0
-  ACK Flag Count: 0
-  URG Flag Count: 0
-  CWE Flag Count: 0
-  ECE Flag Count: 0
-  Down/Up Ratio: 0
-  Average Packet Size: 0
-  Avg Fwd Segment Size: 0
-  Avg Bwd Segment Size: 0
-  Fwd Header Length.1: 0
-  Fwd Avg Bytes/Bulk: 0
-  Fwd Avg Packets/Bulk: 0
-  Fwd Avg Bulk Rate: 0
-  Bwd Avg Bytes/Bulk: 0
-  Bwd Avg Packets/Bulk: 0
-  Bwd Avg Bulk Rate: 0
-  Subflow Fwd Packets: 0
-  Subflow Fwd Bytes: 0
-  Subflow Bwd Packets: 0
-  Subflow Bwd Bytes: 0
-  Init_Win_bytes_forward: 0
-  Init_Win_bytes_backward: 0
-  act_data_pkt_fwd: 0
-  min_seg_size_forward: 0
-  Active Mean: 0
-  Active Std: 0
-  Active Max: 0
-  Active Min: 0
-  Idle Mean: 0
-  Idle Std: 0
-  Idle Max: 0
-  Idle Min: 0
-  Label: 0
-MISSING KEY FEATURES (where present): {}
-EXACT DUPLICATE ROWS INCLUDING IDENTIFIERS (within file): 6,066
-IDENTIFIER FIELDS EXCLUDED FOR SECOND DUPLICATE CHECK: []
-DUPLICATE ROWS EXCLUDING IDENTIFIERS (within file): 6,066
-NOTE: Repeated flow summaries can represent distinct events. Do not delete blindly.
-NOTE: Cross-file duplicates, near-duplicates, entity repeats, timestamps and leakage require further checks.
+============================================================================
+DATA AUDIT  |  CICIDS2017  |  CSV 6 OF 8
+============================================================================
+Files analyzed       : 1
+Total records        : 170,366
+Columns per file     : 79
+Target column        : Label
+Missing target labels: 0
+
+Source file(s):
+  - data/raw/cicids2017/Thursday-WorkingHours-Morning-WebAttacks.pcap_ISCX.csv
+
+1. CLASS DISTRIBUTION (ORIGINAL LABELS)
+----------------------------------------------------------------------------
+  Original label                             Records     Share
+  ------------------------------------ ------------- ---------
+  BENIGN                                     168,186    98.72%
+  Web Attack � Brute Force                     1,507     0.88%
+  Web Attack � XSS                               652     0.38%
+  Web Attack � Sql Injection                      21     0.01%
+
+  Binary interpretation : benign = 168,186 (98.72%); attacks = 2,180 (1.28%)
+  Rule: BENIGN -> 0; every non-BENIGN attack name -> 1. Review any unexpected/missing labels before modeling.
+
+2. MISSING VALUES
+----------------------------------------------------------------------------
+  Missing target labels : 0
+  Missing cells (all) : 20
+  Columns containing missing values:
+    Flow Bytes/s                                20
+  78 other column(s) have zero missing cells.
+  Note: Infinity and placeholder strings need separate quality checks.
+
+3. EXACT DUPLICATE RECORDS
+----------------------------------------------------------------------------
+  Identical full-row occurrences (within each file) : 6,066
+  Identical occurrences excluding ID fields      : 6,066
+  Fields excluded: none
+  IMPORTANT: These counts include target labels and are within-file ONLY.
+  They are NOT train/test leakage or cross-file duplicate counts.
+  Repeated summaries may represent distinct events; do not delete blindly.
+
+4. AVAILABLE COLUMNS
+----------------------------------------------------------------------------
+  79 columns, in original file order:
+  Destination Port, Flow Duration, Total Fwd Packets, Total Backward
+  Packets, Total Length of Fwd Packets, Total Length of Bwd Packets, Fwd
+  Packet Length Max, Fwd Packet Length Min, Fwd Packet Length Mean, Fwd
+  Packet Length Std, Bwd Packet Length Max, Bwd Packet Length Min, Bwd
+  Packet Length Mean, Bwd Packet Length Std, Flow Bytes/s, Flow Packets/s,
+  Flow IAT Mean, Flow IAT Std, Flow IAT Max, Flow IAT Min, Fwd IAT Total,
+  Fwd IAT Mean, Fwd IAT Std, Fwd IAT Max, Fwd IAT Min, Bwd IAT Total, Bwd
+  IAT Mean, Bwd IAT Std, Bwd IAT Max, Bwd IAT Min, Fwd PSH Flags, Bwd PSH
+  Flags, Fwd URG Flags, Bwd URG Flags, Fwd Header Length, Bwd Header
+  Length, Fwd Packets/s, Bwd Packets/s, Min Packet Length, Max Packet
+  Length, Packet Length Mean, Packet Length Std, Packet Length Variance,
+  FIN Flag Count, SYN Flag Count, RST Flag Count, PSH Flag Count, ACK Flag
+  Count, URG Flag Count, CWE Flag Count, ECE Flag Count, Down/Up Ratio,
+  Average Packet Size, Avg Fwd Segment Size, Avg Bwd Segment Size, Fwd
+  Header Length.1, Fwd Avg Bytes/Bulk, Fwd Avg Packets/Bulk, Fwd Avg Bulk
+  Rate, Bwd Avg Bytes/Bulk, Bwd Avg Packets/Bulk, Bwd Avg Bulk Rate,
+  Subflow Fwd Packets, Subflow Fwd Bytes, Subflow Bwd Packets, Subflow Bwd
+  Bytes, Init_Win_bytes_forward, Init_Win_bytes_backward,
+  act_data_pkt_fwd, min_seg_size_forward, Active Mean, Active Std, Active
+  Max, Active Min, Idle Mean, Idle Std, Idle Max, Idle Min, Label
+
+5. WHAT THIS AUDIT DOES NOT ESTABLISH
+----------------------------------------------------------------------------
+  - No train/validation/test overlap guarantee yet.
+  - No near-duplicate, feature-alignment or unit verification yet.
+  - No automatic cleaning or removal of rows has occurred.
+  - Check results/audits/quality_*.txt for separate quality checks
+    (or the corresponding files in dataset subfolders).

@@ -1,8 +1,9 @@
-UNSW-NB15: 257,673 total rows across 2 inspected file(s)
+UNSW-NB15: 257,673 rows across 2 inspected file(s)
   1: 164,673 (63.91%)
   0: 93,000 (36.09%)
-  Warning: Within-file duplicate counts cannot be used as cross-file duplicate counts.
-CICIDS2017: 2,830,743 total rows across 8 inspected file(s)
+  Reminder: counts of duplicates within CSV files are NOT cross-file overlap counts.
+
+CICIDS2017: 2,830,743 rows across 8 inspected file(s)
   BENIGN: 2,273,097 (80.30%)
   DoS Hulk: 231,073 (8.16%)
   PortScan: 158,930 (5.61%)
@@ -18,8 +19,10 @@ CICIDS2017: 2,830,743 total rows across 8 inspected file(s)
   Infiltration: 36 (0.00%)
   Web Attack � Sql Injection: 21 (0.00%)
   Heartbleed: 11 (0.00%)
-  Warning: Within-file duplicate counts cannot be used as cross-file duplicate counts.
-TON_IoT: 211,043 total rows across 1 inspected file(s)
+  Reminder: counts of duplicates within CSV files are NOT cross-file overlap counts.
+
+TON_IoT: 211,043 rows across 1 inspected file(s)
   1: 161,043 (76.31%)
   0: 50,000 (23.69%)
-  Warning: Within-file duplicate counts cannot be used as cross-file duplicate counts.
+  Reminder: counts of duplicates within CSV files are NOT cross-file overlap counts.
+

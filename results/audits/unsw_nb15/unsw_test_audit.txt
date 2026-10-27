@@ -1,63 +1,56 @@
-DATASET: UNSW-NB15
-FILE: data\raw\unsw_nb15\UNSW_NB15_testing-set.csv
-ROWS: 82,332
-COLUMNS: 45
-COLUMN NAMES: ['id', 'dur', 'proto', 'service', 'state', 'spkts', 'dpkts', 'sbytes', 'dbytes', 'rate', 'sttl', 'dttl', 'sload', 'dload', 'sloss', 'dloss', 'sinpkt', 'dinpkt', 'sjit', 'djit', 'swin', 'stcpb', 'dtcpb', 'dwin', 'tcprtt', 'synack', 'ackdat', 'smean', 'dmean', 'trans_depth', 'response_body_len', 'ct_srv_src', 'ct_state_ttl', 'ct_dst_ltm', 'ct_src_dport_ltm', 'ct_dst_sport_ltm', 'ct_dst_src_ltm', 'is_ftp_login', 'ct_ftp_cmd', 'ct_flw_http_mthd', 'ct_src_ltm', 'ct_srv_dst', 'is_sm_ips_ports', 'attack_cat', 'label']
-TARGET COLUMN: label
-ORIGINAL LABEL COUNTS (do not assume all unknown labels are benign):
-  1: 45,332 (55.06%)
-  0: 37,000 (44.94%)
-MISSING TARGET VALUES: 0
-MISSING VALUES (ALL COLUMNS): 0
-MISSING BY COLUMN:
-  id: 0
-  dur: 0
-  proto: 0
-  service: 0
-  state: 0
-  spkts: 0
-  dpkts: 0
-  sbytes: 0
-  dbytes: 0
-  rate: 0
-  sttl: 0
-  dttl: 0
-  sload: 0
-  dload: 0
-  sloss: 0
-  dloss: 0
-  sinpkt: 0
-  dinpkt: 0
-  sjit: 0
-  djit: 0
-  swin: 0
-  stcpb: 0
-  dtcpb: 0
-  dwin: 0
-  tcprtt: 0
-  synack: 0
-  ackdat: 0
-  smean: 0
-  dmean: 0
-  trans_depth: 0
-  response_body_len: 0
-  ct_srv_src: 0
-  ct_state_ttl: 0
-  ct_dst_ltm: 0
-  ct_src_dport_ltm: 0
-  ct_dst_sport_ltm: 0
-  ct_dst_src_ltm: 0
-  is_ftp_login: 0
-  ct_ftp_cmd: 0
-  ct_flw_http_mthd: 0
-  ct_src_ltm: 0
-  ct_srv_dst: 0
-  is_sm_ips_ports: 0
-  attack_cat: 0
-  label: 0
-MISSING KEY FEATURES (where present): {'dur': 0, 'proto': 0, 'spkts': 0, 'dpkts': 0, 'sbytes': 0, 'dbytes': 0}
-EXACT DUPLICATE ROWS INCLUDING IDENTIFIERS (within file): 0
-IDENTIFIER FIELDS EXCLUDED FOR SECOND DUPLICATE CHECK: ['id']
-DUPLICATE ROWS EXCLUDING IDENTIFIERS (within file): 26,387
-NOTE: Repeated flow summaries can represent distinct events. Do not delete blindly.
-NOTE: Cross-file duplicates, near-duplicates, entity repeats, timestamps and leakage require further checks.
+============================================================================
+DATA AUDIT  |  UNSW-NB15  |  OFFICIAL TEST FILE
+============================================================================
+Files analyzed       : 1
+Total records        : 82,332
+Columns per file     : 45
+Target column        : label
+Missing target labels: 0
+
+Source file(s):
+  - data/raw/unsw_nb15/UNSW_NB15_testing-set.csv
+
+1. CLASS DISTRIBUTION (ORIGINAL LABELS)
+----------------------------------------------------------------------------
+  Original label                             Records     Share
+  ------------------------------------ ------------- ---------
+  1                                           45,332    55.06%
+  0                                           37,000    44.94%
+
+  Binary interpretation : benign = 37,000 (44.94%); attacks = 45,332 (55.06%)
+  Rule: label 0 -> benign; label 1 -> attack.
+
+2. MISSING VALUES
+----------------------------------------------------------------------------
+  Missing target labels : 0
+  Missing cells (all) : 0
+  No standard null (NaN) values detected in inspected columns.
+  Note: Infinity and placeholder strings need separate quality checks.
+
+3. EXACT DUPLICATE RECORDS
+----------------------------------------------------------------------------
+  Identical full-row occurrences (within each file) : 0
+  Identical occurrences excluding ID fields      : 26,387
+  Fields excluded: id
+  IMPORTANT: These counts include target labels and are within-file ONLY.
+  They are NOT train/test leakage or cross-file duplicate counts.
+  Repeated summaries may represent distinct events; do not delete blindly.
+
+4. AVAILABLE COLUMNS
+----------------------------------------------------------------------------
+  45 columns, in original file order:
+  id, dur, proto, service, state, spkts, dpkts, sbytes, dbytes, rate,
+  sttl, dttl, sload, dload, sloss, dloss, sinpkt, dinpkt, sjit, djit,
+  swin, stcpb, dtcpb, dwin, tcprtt, synack, ackdat, smean, dmean,
+  trans_depth, response_body_len, ct_srv_src, ct_state_ttl, ct_dst_ltm,
+  ct_src_dport_ltm, ct_dst_sport_ltm, ct_dst_src_ltm, is_ftp_login,
+  ct_ftp_cmd, ct_flw_http_mthd, ct_src_ltm, ct_srv_dst, is_sm_ips_ports,
+  attack_cat, label
+
+5. WHAT THIS AUDIT DOES NOT ESTABLISH
+----------------------------------------------------------------------------
+  - No train/validation/test overlap guarantee yet.
+  - No near-duplicate, feature-alignment or unit verification yet.
+  - No automatic cleaning or removal of rows has occurred.
+  - Check results/audits/quality_*.txt for separate quality checks
+    (or the corresponding files in dataset subfolders).

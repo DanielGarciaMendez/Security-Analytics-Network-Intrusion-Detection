@@ -1,62 +1,57 @@
-DATASET: TON_IoT
-FILE: data\raw\ton_iot\train_test_network.csv
-ROWS: 211,043
-COLUMNS: 44
-COLUMN NAMES: ['src_ip', 'src_port', 'dst_ip', 'dst_port', 'proto', 'service', 'duration', 'src_bytes', 'dst_bytes', 'conn_state', 'missed_bytes', 'src_pkts', 'src_ip_bytes', 'dst_pkts', 'dst_ip_bytes', 'dns_query', 'dns_qclass', 'dns_qtype', 'dns_rcode', 'dns_AA', 'dns_RD', 'dns_RA', 'dns_rejected', 'ssl_version', 'ssl_cipher', 'ssl_resumed', 'ssl_established', 'ssl_subject', 'ssl_issuer', 'http_trans_depth', 'http_method', 'http_uri', 'http_version', 'http_request_body_len', 'http_response_body_len', 'http_status_code', 'http_user_agent', 'http_orig_mime_types', 'http_resp_mime_types', 'weird_name', 'weird_addl', 'weird_notice', 'label', 'type']
-TARGET COLUMN: label
-ORIGINAL LABEL COUNTS (do not assume all unknown labels are benign):
-  1: 161,043 (76.31%)
-  0: 50,000 (23.69%)
-MISSING TARGET VALUES: 0
-MISSING VALUES (ALL COLUMNS): 0
-MISSING BY COLUMN:
-  src_ip: 0
-  src_port: 0
-  dst_ip: 0
-  dst_port: 0
-  proto: 0
-  service: 0
-  duration: 0
-  src_bytes: 0
-  dst_bytes: 0
-  conn_state: 0
-  missed_bytes: 0
-  src_pkts: 0
-  src_ip_bytes: 0
-  dst_pkts: 0
-  dst_ip_bytes: 0
-  dns_query: 0
-  dns_qclass: 0
-  dns_qtype: 0
-  dns_rcode: 0
-  dns_AA: 0
-  dns_RD: 0
-  dns_RA: 0
-  dns_rejected: 0
-  ssl_version: 0
-  ssl_cipher: 0
-  ssl_resumed: 0
-  ssl_established: 0
-  ssl_subject: 0
-  ssl_issuer: 0
-  http_trans_depth: 0
-  http_method: 0
-  http_uri: 0
-  http_version: 0
-  http_request_body_len: 0
-  http_response_body_len: 0
-  http_status_code: 0
-  http_user_agent: 0
-  http_orig_mime_types: 0
-  http_resp_mime_types: 0
-  weird_name: 0
-  weird_addl: 0
-  weird_notice: 0
-  label: 0
-  type: 0
-MISSING KEY FEATURES (where present): {'proto': 0}
-EXACT DUPLICATE ROWS INCLUDING IDENTIFIERS (within file): 20,569
-IDENTIFIER FIELDS EXCLUDED FOR SECOND DUPLICATE CHECK: []
-DUPLICATE ROWS EXCLUDING IDENTIFIERS (within file): 20,569
-NOTE: Repeated flow summaries can represent distinct events. Do not delete blindly.
-NOTE: Cross-file duplicates, near-duplicates, entity repeats, timestamps and leakage require further checks.
+============================================================================
+DATA AUDIT  |  TON_IoT  |  EXTERNAL TEST SUBSET
+============================================================================
+Files analyzed       : 1
+Total records        : 211,043
+Columns per file     : 44
+Target column        : label
+Missing target labels: 0
+
+Source file(s):
+  - data/raw/ton_iot/train_test_network.csv
+
+1. CLASS DISTRIBUTION (ORIGINAL LABELS)
+----------------------------------------------------------------------------
+  Original label                             Records     Share
+  ------------------------------------ ------------- ---------
+  1                                          161,043    76.31%
+  0                                           50,000    23.69%
+
+  Binary interpretation : benign = 50,000 (23.69%); attacks = 161,043 (76.31%)
+  Rule: label 0 -> benign; label 1 -> attack.
+
+2. MISSING VALUES
+----------------------------------------------------------------------------
+  Missing target labels : 0
+  Missing cells (all) : 0
+  No standard null (NaN) values detected in inspected columns.
+  Note: Infinity and placeholder strings need separate quality checks.
+
+3. EXACT DUPLICATE RECORDS
+----------------------------------------------------------------------------
+  Identical full-row occurrences (within each file) : 20,569
+  Identical occurrences excluding ID fields      : 20,569
+  Fields excluded: none
+  IMPORTANT: These counts include target labels and are within-file ONLY.
+  They are NOT train/test leakage or cross-file duplicate counts.
+  Repeated summaries may represent distinct events; do not delete blindly.
+
+4. AVAILABLE COLUMNS
+----------------------------------------------------------------------------
+  44 columns, in original file order:
+  src_ip, src_port, dst_ip, dst_port, proto, service, duration, src_bytes,
+  dst_bytes, conn_state, missed_bytes, src_pkts, src_ip_bytes, dst_pkts,
+  dst_ip_bytes, dns_query, dns_qclass, dns_qtype, dns_rcode, dns_AA,
+  dns_RD, dns_RA, dns_rejected, ssl_version, ssl_cipher, ssl_resumed,
+  ssl_established, ssl_subject, ssl_issuer, http_trans_depth, http_method,
+  http_uri, http_version, http_request_body_len, http_response_body_len,
+  http_status_code, http_user_agent, http_orig_mime_types,
+  http_resp_mime_types, weird_name, weird_addl, weird_notice, label, type
+
+5. WHAT THIS AUDIT DOES NOT ESTABLISH
+----------------------------------------------------------------------------
+  - No train/validation/test overlap guarantee yet.
+  - No near-duplicate, feature-alignment or unit verification yet.
+  - No automatic cleaning or removal of rows has occurred.
+  - Check results/audits/quality_*.txt for separate quality checks
+    (or the corresponding files in dataset subfolders).

@@ -1,66 +1,49 @@
-{
-  "file": "data\\raw\\ton_iot\\train_test_network.csv",
-  "rows": 211043,
-  "columns": 44,
-  "label_values": {
-    "1": 161043,
-    "0": 50000
-  },
-  "selected_numeric_field_checks": {
-    "duration": {
-      "missing": 0,
-      "non_numeric": 0,
-      "infinite": 0
-    },
-    "src_bytes": {
-      "missing": 0,
-      "non_numeric": 0,
-      "infinite": 0
-    },
-    "dst_bytes": {
-      "missing": 0,
-      "non_numeric": 0,
-      "infinite": 0
-    },
-    "src_pkts": {
-      "missing": 0,
-      "non_numeric": 0,
-      "infinite": 0
-    },
-    "dst_pkts": {
-      "missing": 0,
-      "non_numeric": 0,
-      "infinite": 0
-    },
-    "src_port": {
-      "missing": 0,
-      "non_numeric": 0,
-      "infinite": 0
-    },
-    "dst_port": {
-      "missing": 0,
-      "non_numeric": 0,
-      "infinite": 0
-    }
-  },
-  "repeated_entity_counts": {
-    "src_ip": {
-      "distinct_values": 51,
-      "values_repeated_at_least_twice": 49,
-      "rows_belonging_to_repeated_values": 211041
-    },
-    "dst_ip": {
-      "distinct_values": 753,
-      "values_repeated_at_least_twice": 574,
-      "rows_belonging_to_repeated_values": 210864
-    },
-    "source_destination_ip_pair": {
-      "distinct_values": 1026,
-      "values_repeated_at_least_twice": 754,
-      "rows_belonging_to_repeated_values": 210771
-    }
-  },
-  "exact_duplicate_occurrences_all_columns": 20569,
-  "time_check": "Unavailable: this downloaded CSV has no timestamp column; collection period belongs in dataset provenance.",
-  "action": "Use this specific 211,043-row subset; do not describe it as the entire TON_IoT collection. If testing only, repeated host groups matter for interpreting independence, not for model-fitting splits on TON_IoT."
-}
+============================================================================
+DATA QUALITY CHECK  |  TON_IoT
+============================================================================
+Source: results/audits/quality_summary.json
+These values were CALCULATED by check_quality_leakage.py.
+This script reformats the saved results; it does not recompute them.
+
+1. LOADED FILE AND DUPLICATES
+----------------------------------------------------------------------------
+  File         : data\raw\ton_iot\train_test_network.csv
+  Rows         : 211,043
+  Columns      : 44
+  Exact full-row duplicate occurrences: 20,569
+
+2. REPEATED HOSTS AND CONNECTIONS
+----------------------------------------------------------------------------
+  src_ip:
+    Unique values                : 51
+    Values appearing twice+      : 49
+    Rows involving repeated value: 211,041
+  dst_ip:
+    Unique values                : 753
+    Values appearing twice+      : 574
+    Rows involving repeated value: 210,864
+  source_destination_ip_pair:
+    Unique values                : 1,026
+    Values appearing twice+      : 754
+    Rows involving repeated value: 210,771
+
+3. INVALID VALUES IN SELECTED NUMERIC FEATURES
+----------------------------------------------------------------------------
+  duration         missing=0  non_numeric=0  infinite=0
+  src_bytes        missing=0  non_numeric=0  infinite=0
+  dst_bytes        missing=0  non_numeric=0  infinite=0
+  src_pkts         missing=0  non_numeric=0  infinite=0
+  dst_pkts         missing=0  non_numeric=0  infinite=0
+  src_port         missing=0  non_numeric=0  infinite=0
+  dst_port         missing=0  non_numeric=0  infinite=0
+
+4. LIMITATIONS AND NEXT ACTIONS
+----------------------------------------------------------------------------
+  Time Check:
+    Unavailable: this downloaded CSV has no timestamp column; collection
+    period belongs in dataset provenance.
+  Action:
+    Use this specific 211,043-row subset; do not describe it as the entire
+    TON_IoT collection. If testing only, repeated host groups matter for
+    interpreting independence, not for model-fitting splits on TON_IoT.
+  Reminder: no raw data was edited by this formatting step.

@@ -1,0 +1,107 @@
+============================================================================
+DATA AUDIT  |  CICIDS2017  |  EXTERNAL TEST DATASET
+============================================================================
+Files analyzed       : 8
+Total records        : 2,830,743
+Columns per file     : 79
+Target column        : Label
+Missing target labels: 0
+
+Source file(s):
+  - data/raw/cicids2017/Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv
+  - data/raw/cicids2017/Friday-WorkingHours-Afternoon-PortScan.pcap_ISCX.csv
+  - data/raw/cicids2017/Friday-WorkingHours-Morning.pcap_ISCX.csv
+  - data/raw/cicids2017/Monday-WorkingHours.pcap_ISCX.csv
+  - data/raw/cicids2017/Thursday-WorkingHours-Afternoon-Infilteration.pcap_ISCX.csv
+  - data/raw/cicids2017/Thursday-WorkingHours-Morning-WebAttacks.pcap_ISCX.csv
+  - data/raw/cicids2017/Tuesday-WorkingHours.pcap_ISCX.csv
+  - data/raw/cicids2017/Wednesday-workingHours.pcap_ISCX.csv
+
+1. CLASS DISTRIBUTION (ORIGINAL LABELS)
+----------------------------------------------------------------------------
+  Original label                             Records     Share
+  ------------------------------------ ------------- ---------
+  BENIGN                                   2,273,097    80.30%
+  DoS Hulk                                   231,073     8.16%
+  PortScan                                   158,930     5.61%
+  DDoS                                       128,027     4.52%
+  DoS GoldenEye                               10,293     0.36%
+  FTP-Patator                                  7,938     0.28%
+  SSH-Patator                                  5,897     0.21%
+  DoS slowloris                                5,796     0.20%
+  DoS Slowhttptest                             5,499     0.19%
+  Bot                                          1,966     0.07%
+  Web Attack � Brute Force                     1,507     0.05%
+  Web Attack � XSS                               652     0.02%
+  Infiltration                                    36     0.00%
+  Web Attack � Sql Injection                      21     0.00%
+  Heartbleed                                      11     0.00%
+
+  Binary interpretation : benign = 2,273,097 (80.30%); attacks = 557,646 (19.70%)
+  Rule: BENIGN -> 0; every non-BENIGN attack name -> 1. Review any unexpected/missing labels before modeling.
+
+2. MISSING VALUES
+----------------------------------------------------------------------------
+  Missing target labels : 0
+  Missing cells (all) : 1,358
+  Columns containing missing values:
+    Flow Bytes/s                             1,358
+  78 other column(s) have zero missing cells.
+  Note: Infinity and placeholder strings need separate quality checks.
+
+3. EXACT DUPLICATE RECORDS
+----------------------------------------------------------------------------
+  Identical full-row occurrences (within each file) : 256,479
+  Identical occurrences excluding ID fields      : 256,479
+  Fields excluded: none
+  IMPORTANT: These counts include target labels and are within-file ONLY.
+  They are NOT train/test leakage or cross-file duplicate counts.
+  Repeated summaries may represent distinct events; do not delete blindly.
+  The values above SUM each file's duplicate occurrences.
+  Duplicates between different daily files are NOT included.
+
+4. AVAILABLE COLUMNS
+----------------------------------------------------------------------------
+  79 columns, in original file order:
+  Destination Port, Flow Duration, Total Fwd Packets, Total Backward
+  Packets, Total Length of Fwd Packets, Total Length of Bwd Packets, Fwd
+  Packet Length Max, Fwd Packet Length Min, Fwd Packet Length Mean, Fwd
+  Packet Length Std, Bwd Packet Length Max, Bwd Packet Length Min, Bwd
+  Packet Length Mean, Bwd Packet Length Std, Flow Bytes/s, Flow Packets/s,
+  Flow IAT Mean, Flow IAT Std, Flow IAT Max, Flow IAT Min, Fwd IAT Total,
+  Fwd IAT Mean, Fwd IAT Std, Fwd IAT Max, Fwd IAT Min, Bwd IAT Total, Bwd
+  IAT Mean, Bwd IAT Std, Bwd IAT Max, Bwd IAT Min, Fwd PSH Flags, Bwd PSH
+  Flags, Fwd URG Flags, Bwd URG Flags, Fwd Header Length, Bwd Header
+  Length, Fwd Packets/s, Bwd Packets/s, Min Packet Length, Max Packet
+  Length, Packet Length Mean, Packet Length Std, Packet Length Variance,
+  FIN Flag Count, SYN Flag Count, RST Flag Count, PSH Flag Count, ACK Flag
+  Count, URG Flag Count, CWE Flag Count, ECE Flag Count, Down/Up Ratio,
+  Average Packet Size, Avg Fwd Segment Size, Avg Bwd Segment Size, Fwd
+  Header Length.1, Fwd Avg Bytes/Bulk, Fwd Avg Packets/Bulk, Fwd Avg Bulk
+  Rate, Bwd Avg Bytes/Bulk, Bwd Avg Packets/Bulk, Bwd Avg Bulk Rate,
+  Subflow Fwd Packets, Subflow Fwd Bytes, Subflow Bwd Packets, Subflow Bwd
+  Bytes, Init_Win_bytes_forward, Init_Win_bytes_backward,
+  act_data_pkt_fwd, min_seg_size_forward, Active Mean, Active Std, Active
+  Max, Active Min, Idle Mean, Idle Std, Idle Max, Idle Min, Label
+
+5. FILE-BY-FILE SUMMARY
+----------------------------------------------------------------------------
+   #      Records   Missing      Dups*  CSV file
+  ------------------------------------------------------------------
+   1      225,745         4      2,633  Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv
+   2      286,467        15     72,353  Friday-WorkingHours-Afternoon-PortScan.pcap_ISCX.csv
+   3      191,033        28      6,888  Friday-WorkingHours-Morning.pcap_ISCX.csv
+   4      529,918        64     26,935  Monday-WorkingHours.pcap_ISCX.csv
+   5      288,602        18     35,630  Thursday-WorkingHours-Afternoon-Infilteration.pcap_ISCX.csv
+   6      170,366        20      6,066  Thursday-WorkingHours-Morning-WebAttacks.pcap_ISCX.csv
+   7      445,909       201     24,065  Tuesday-WorkingHours.pcap_ISCX.csv
+   8      692,703     1,008     81,909  Wednesday-workingHours.pcap_ISCX.csv
+  * Within-file duplicate occurrences (excluding ID fields).
+
+6. WHAT THIS AUDIT DOES NOT ESTABLISH
+----------------------------------------------------------------------------
+  - No train/validation/test overlap guarantee yet.
+  - No near-duplicate, feature-alignment or unit verification yet.
+  - No automatic cleaning or removal of rows has occurred.
+  - Check results/audits/quality_*.txt for separate quality checks
+    (or the corresponding files in dataset subfolders).

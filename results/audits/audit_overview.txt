@@ -1,0 +1,20 @@
+============================================================================
+PROJECT 11 - DATASET AUDIT OVERVIEW
+============================================================================
+All rows below come from the downloaded CSV files on this machine.
+Duplicate counts are WITHIN each file, not cross-file leakage.
+
+Subset                        Rows     Attacks      Benign  Null cells
+----------------------------------------------------------------------------
+unsw_train                 175,341     119,341      56,000           0
+unsw_test                   82,332      45,332      37,000           0
+cicids2017               2,830,743     557,646   2,273,097       1,358
+ton_iot                    211,043     161,043      50,000           0
+
+Details:
+  UNSW train : results/audits/unsw_nb15/unsw_train_audit.txt
+  UNSW test  : results/audits/unsw_nb15/unsw_test_audit.txt
+  CICIDS2017 : results/audits/cicids/cicids2017_audit.txt
+  TON_IoT    : results/audits/ton_iot/ton_iot_audit.txt
+
+See the separate quality_*.txt reports for cross-file overlap / inf / hosts.
