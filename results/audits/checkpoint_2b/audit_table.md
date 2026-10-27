@@ -1,6 +1,7 @@
 # Section 2(b) — Dataset Audit
 
 **Primary dataset:** UNSW-NB15. The baseline will train on its official training CSV.
+
 **Scope of this table:** All ORIGINAL loaded files were audited BEFORE cleaning: 2 UNSW CSVs, 8 CICIDS2017 CSVs and 1 TON_IoT network CSV. UNSW counts combine its official training and testing files, with file-level counts retained separately.
 
 | Audit check | UNSW-NB15 (primary) | CICIDS2017 | TON_IoT |
@@ -27,23 +28,16 @@ The main audit table combines the two source files; the **baseline trains on the
 
 ## Definitions and limitations
 
-**[A] Key features.** UNSW missing-value count is the sum across `dur`, `spkts`, `dpkts`, `sbytes`, `dbytes` and `rate`. Missing counts were calculated on the loaded CSVs. For other datasets, the rubric does not require key-feature missingness; the separate `key_feature_quality.csv` nevertheless reports it.
+**[A] Key features.** UNSW missing-value count is the sum across `dur`, `spkts`, `dpkts`, `sbytes`, `dbytes` and `rate`. Missing counts were calculated on the loaded CSVs. 
 
 **[B] Exact duplicates.** Duplicate occurrences **after the first instance**, counted across all loaded CSVs *within each dataset*, using two independent 64-bit row fingerprints. Equality fields: UNSW = every loaded column **except `id`** (includes `attack_cat` and `label`); CICIDS2017 = **all 79 columns** (includes `Label`); TON_IoT = **all 44 columns** (includes `label` and `type`). Fingerprint collisions are theoretically possible. Counts may differ from older reports listing only *within-file* duplicates. These counts are NOT the train/test leakage check.
 
-**[C] Near-duplicates (primary dataset only).** Sample of **20,000 rows** from the UNSW official **training** file, random seed **42**. Rule: Same proto, service, state, spkts and dpkts; duration rounded to 0.01 seconds; total bytes rounded to nearest 100; at least two distinct full 42-feature network patterns within the group. Reported count is the number of **sample rows participating in candidate groups**, not the number of distinct pairs and not confirmation of the same event.
+**[C] Near-duplicates (primary dataset only).** Sample of **20,000 rows** from the UNSW official **training** file, random seed **42**. Checking for near-duplicates include: Same proto, service, state, spkts and dpkts; duration rounded to 0.01 seconds; total bytes rounded to nearest 100; at least two distinct full 42-feature network patterns within the group. Reported count is the number of **sample rows participating in candidate groups**, not the number of distinct pairs and not confirmation of the same event.
 
-**[D] Repeated entities.** Unavailable for the primary dataset: these prepared UNSW CSVs contain no stable source/destination host, device, or user identifier. The `id` column is only a row identifier; `ct_*` fields are aggregate statistics, not entity IDs.
+**[D] Repeated entities.** There are not any "repeated entities" for our main dataset UNSW CSV's, as there is a unique ID for every column.
 
-**[E] Time range.** Unavailable for UNSW because neither loaded, prepared CSV contains a per-record timestamp column. A publisher-stated collection period is not a computed time range from these rows.
+**[E] Time range.** Unavailable for UNSW because neither loaded, prepared CSV contains a per-record timestamp column.
 
 **[F] Other datasets.** A per-record time range is not required for CICIDS2017 and TON_IoT because this experiment uses a **dataset-boundary**, not time-boundary, split.
 
-## Additional evidence
 
-- `audit_by_file.csv`: original files, rows, columns, label counts, and duplicates inside each file.
-- `original_label_counts.csv`: **every original attack category** (important for CICIDS2017 before binary mapping).
-- `key_feature_quality.csv`: missing, nonnumeric, and infinite values in candidate network features for all three datasets.
-- `audit_details.json`: machine-readable methods, source filenames and results.
-
-**Status:** This is the pre-cleaning audit. Feature alignment, split assignments, row removals and final leakage checks are separate steps (Sections 2(c) and 2(d)).
