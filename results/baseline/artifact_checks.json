@@ -1,0 +1,9 @@
+{
+  "test_rows_verified": 3124003,
+  "unique_ids": true,
+  "labels_match_assignments": true,
+  "finite_probabilities_in_unit_interval": true,
+  "saved_model_reproduces_100_scores": true,
+  "regression_tests_passed": 5,
+  "course_checker": "completed; see checker_output.txt"
+}

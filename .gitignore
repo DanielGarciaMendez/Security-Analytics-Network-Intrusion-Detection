@@ -13,3 +13,6 @@ models/
 
 # Temporary files
 .ipynb_checkpoints/
+
+# Isolated outputs and linked raw inputs for README reproduction verification
+results/reproduction/workspace/

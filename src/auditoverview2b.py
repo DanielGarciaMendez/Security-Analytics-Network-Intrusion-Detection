@@ -1,7 +1,7 @@
 """COSC 4371 Project 11 — Section 2(b): reproducible dataset audit table.
 
 Run from repository root (Windows PowerShell):
-    .\\.venv\\Scripts\\python.exe src\\build_checkpoint_audit.py
+    .\\.venv\\Scripts\\python.exe src\\auditoverview2b.py
 
 Inputs (read only):
     data/raw/unsw_nb15/UNSW_NB15_training-set.csv

@@ -1,0 +1,57 @@
+split.csv: 3209069 rows. scores.csv: 3124003 rows.
+
+Rows per dataset and split
+--------------------------
+   dataset      split    rows  positive  negative  positive %
+CICIDS2017       test 2830628    557646   2272982       19.70
+   TON_IoT       test  211043    161043     50000       76.31
+ UNSW-NB15      train   68048     35851     32197       52.68
+ UNSW-NB15 validation   17018      8961      8057       52.66
+ UNSW-NB15       test   82332     45332     37000       55.06
+
+Metrics per test set (threshold 0.9426192528735632; positive when score >= threshold)
+-------------------------------------------------------------------------------------
+Each value is followed by its 95% bootstrap interval in brackets.
+
+Test set: UNSW-NB15 official test
+  test rows                 82332
+  positive rows             45332 (55.06%)
+  negative rows             37000 (44.94%)
+  bootstrap resamples       1000
+  random-scorer AP          0.5506 (equals the positive share)
+  random-scorer AUROC       0.5000
+  precision                 0.7005 [0.6927, 0.7085]
+  recall                    0.2084 [0.2048, 0.2120]
+  false-positive rate       0.1092 [0.1059, 0.1126]
+  AP                        0.7530 [0.7489, 0.7576]
+  AUROC                     0.7833 [0.7799, 0.7867]
+
+Test set: CICIDS2017
+  test rows                 2830628
+  positive rows             557646 (19.70%)
+  negative rows             2272982 (80.30%)
+  bootstrap resamples       200
+  random-scorer AP          0.1970 (equals the positive share)
+  random-scorer AUROC       0.5000
+  precision                 0.3220 [0.3207, 0.3233]
+  recall                    0.3007 [0.2994, 0.3022]
+  false-positive rate       0.1553 [0.1549, 0.1558]
+  AP                        0.2829 [0.2818, 0.2841]
+  AUROC                     0.5048 [0.5039, 0.5060]
+
+Test set: TON_IoT
+  test rows                 211043
+  positive rows             161043 (76.31%)
+  negative rows             50000 (23.69%)
+  bootstrap resamples       200
+  random-scorer AP          0.7631 (equals the positive share)
+  random-scorer AUROC       0.5000
+  precision                 0.8627 [0.8606, 0.8645]
+  recall                    0.5335 [0.5311, 0.5357]
+  false-positive rate       0.2735 [0.2704, 0.2772]
+  AP                        0.7943 [0.7921, 0.7962]
+  AUROC                     0.5169 [0.5139, 0.5191]
+
+Warnings
+--------
+None.

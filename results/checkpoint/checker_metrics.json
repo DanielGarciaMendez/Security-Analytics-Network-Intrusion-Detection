@@ -1,0 +1,115 @@
+{
+  "tests": {
+    "UNSW-NB15 official test": {
+      "precision": {
+        "value": 0.7005,
+        "lower": 0.6927,
+        "upper": 0.7085,
+        "printed": "0.7005 [0.6927, 0.7085]"
+      },
+      "recall": {
+        "value": 0.2084,
+        "lower": 0.2048,
+        "upper": 0.212,
+        "printed": "0.2084 [0.2048, 0.2120]"
+      },
+      "false-positive rate": {
+        "value": 0.1092,
+        "lower": 0.1059,
+        "upper": 0.1126,
+        "printed": "0.1092 [0.1059, 0.1126]"
+      },
+      "AP": {
+        "value": 0.753,
+        "lower": 0.7489,
+        "upper": 0.7576,
+        "printed": "0.7530 [0.7489, 0.7576]"
+      },
+      "AUROC": {
+        "value": 0.7833,
+        "lower": 0.7799,
+        "upper": 0.7867,
+        "printed": "0.7833 [0.7799, 0.7867]"
+      },
+      "rows": "82332",
+      "positive_rows": "45332",
+      "positive_percent": "55.06",
+      "random_AP": "0.5506"
+    },
+    "CICIDS2017": {
+      "precision": {
+        "value": 0.322,
+        "lower": 0.3207,
+        "upper": 0.3233,
+        "printed": "0.3220 [0.3207, 0.3233]"
+      },
+      "recall": {
+        "value": 0.3007,
+        "lower": 0.2994,
+        "upper": 0.3022,
+        "printed": "0.3007 [0.2994, 0.3022]"
+      },
+      "false-positive rate": {
+        "value": 0.1553,
+        "lower": 0.1549,
+        "upper": 0.1558,
+        "printed": "0.1553 [0.1549, 0.1558]"
+      },
+      "AP": {
+        "value": 0.2829,
+        "lower": 0.2818,
+        "upper": 0.2841,
+        "printed": "0.2829 [0.2818, 0.2841]"
+      },
+      "AUROC": {
+        "value": 0.5048,
+        "lower": 0.5039,
+        "upper": 0.506,
+        "printed": "0.5048 [0.5039, 0.5060]"
+      },
+      "rows": "2830628",
+      "positive_rows": "557646",
+      "positive_percent": "19.70",
+      "random_AP": "0.1970"
+    },
+    "TON_IoT": {
+      "precision": {
+        "value": 0.8627,
+        "lower": 0.8606,
+        "upper": 0.8645,
+        "printed": "0.8627 [0.8606, 0.8645]"
+      },
+      "recall": {
+        "value": 0.5335,
+        "lower": 0.5311,
+        "upper": 0.5357,
+        "printed": "0.5335 [0.5311, 0.5357]"
+      },
+      "false-positive rate": {
+        "value": 0.2735,
+        "lower": 0.2704,
+        "upper": 0.2772,
+        "printed": "0.2735 [0.2704, 0.2772]"
+      },
+      "AP": {
+        "value": 0.7943,
+        "lower": 0.7921,
+        "upper": 0.7962,
+        "printed": "0.7943 [0.7921, 0.7962]"
+      },
+      "AUROC": {
+        "value": 0.5169,
+        "lower": 0.5139,
+        "upper": 0.5191,
+        "printed": "0.5169 [0.5139, 0.5191]"
+      },
+      "rows": "211043",
+      "positive_rows": "161043",
+      "positive_percent": "76.31",
+      "random_AP": "0.7631"
+    }
+  },
+  "widest_AUROC_half_width_from_printed_intervals": 0.0033999999999999586,
+  "meaningful_drop": 0.05,
+  "warnings": "None."
+}

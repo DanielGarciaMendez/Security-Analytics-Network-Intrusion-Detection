@@ -1,0 +1,31 @@
+{
+  "status": "completed_with_floating_point_differences",
+  "verification_elapsed_seconds": 14.077725299983285,
+  "comparison_only": true,
+  "command": "python src/run_checkpoint.py",
+  "python": "3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)]",
+  "environment": "Existing environment; all installed versions match requirements-lock.txt. No fresh installation tested.",
+  "inputs": "11 existing raw CSVs linked read-only by pipeline convention; no processed data or prior outputs copied",
+  "split_assignments_identical": true,
+  "test_score_rows": 3124003,
+  "maximum_absolute_score_difference": 3.3306690738754696e-16,
+  "test_predictions_changed": 0,
+  "fitted_tree_arrays_identical": true,
+  "fitted_tree_sha256": "08dcebbc64a21ffdd31e0904a888d0cbac3b49f65bef29e9fe990dde81365c6b",
+  "checker_metrics_and_intervals_identical": false,
+  "original_threshold": 0.9426192528735632,
+  "rebuilt_threshold": 0.9426192528735631,
+  "original_AUROC": {
+    "UNSW-NB15 official test": 0.7832700741198271,
+    "CICIDS2017": 0.5048327129003464,
+    "TON_IoT": 0.516921959041995
+  },
+  "rebuilt_AUROC": {
+    "UNSW-NB15 official test": 0.7832700908134819,
+    "CICIDS2017": 0.5048616257247198,
+    "TON_IoT": 0.5168977383680134
+  },
+  "numerical_note": "Threaded tree-probability sums can differ at floating-point precision. Tiny differences break score ties and can change rank metrics. Original and rebuilt checker outputs are retained; no scores are rounded to hide differences.",
+  "source_snapshot_sha256": "b7a2527ee419791d7ba9e347f8659f0ec32cfe730e530d5835d5be202d8cc73f",
+  "limitations": "Not a fresh Git clone, not an independent download, and not a new Python environment."
+}

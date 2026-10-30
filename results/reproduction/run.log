@@ -1,0 +1,119 @@
+Running auditoverview2b.py
+Reading UNSW-NB15: UNSW_NB15_training-set.csv
+  175,341 rows; 67,601 within-file duplicate occurrences; 0 rows match earlier files
+Reading UNSW-NB15: UNSW_NB15_testing-set.csv
+  82,332 rows; 26,387 within-file duplicate occurrences; 4,247 rows match earlier files
+Reading CICIDS2017: Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv
+  225,745 rows; 2,633 within-file duplicate occurrences; 0 rows match earlier files
+Reading CICIDS2017: Friday-WorkingHours-Afternoon-PortScan.pcap_ISCX.csv
+  286,467 rows; 72,353 within-file duplicate occurrences; 3,851 rows match earlier files
+Reading CICIDS2017: Friday-WorkingHours-Morning.pcap_ISCX.csv
+  191,033 rows; 6,888 within-file duplicate occurrences; 8,232 rows match earlier files
+Reading CICIDS2017: Monday-WorkingHours.pcap_ISCX.csv
+  529,918 rows; 26,935 within-file duplicate occurrences; 2,768 rows match earlier files
+Reading CICIDS2017: Thursday-WorkingHours-Afternoon-Infilteration.pcap_ISCX.csv
+  288,602 rows; 35,630 within-file duplicate occurrences; 14,591 rows match earlier files
+Reading CICIDS2017: Thursday-WorkingHours-Morning-WebAttacks.pcap_ISCX.csv
+  170,366 rows; 6,066 within-file duplicate occurrences; 12,602 rows match earlier files
+Reading CICIDS2017: Tuesday-WorkingHours.pcap_ISCX.csv
+  445,909 rows; 24,065 within-file duplicate occurrences; 19,595 rows match earlier files
+Reading CICIDS2017: Wednesday-workingHours.pcap_ISCX.csv
+  692,703 rows; 81,909 within-file duplicate occurrences; 37,727 rows match earlier files
+Reading TON_IoT: train_test_network.csv
+  211,043 rows; 20,569 within-file duplicate occurrences; 0 rows match earlier files
+
+AUDIT TABLE (generated from the raw files):
+Rows                        | 257,673                               | 2,830,743            | 211,043
+Columns                     | 45                                    | 79                   | 44
+Benign count (%)            | 93,000 (36.09%)                       | 2,273,097 (80.30%)   | 50,000 (23.69%)
+Malicious count (%)         | 164,673 (63.91%)                      | 557,646 (19.70%)     | 161,043 (76.31%)
+Missing target values       | 0                                     | 0                    | 0
+Missing key features        | 0 [A]                                 | —                    | —
+Exact duplicates            | 94,928 [B]                            | 308,381 [B]          | 20,569 [B]
+Near-duplicates             | 14,431 candidate rows / 20,000 sampled [C] | —                    | —
+Repeated entities           | Unavailable — no host IDs [D]         | —                    | —
+Time range                  | Unavailable — no timestamp [E]        | Not required [F]     | Not required [F]
+
+Reports written to: results\audits\checkpoint_2b
+Open audit_table.md for the checkpoint table and methods.
+Running prepare_shared_features.py
+Processing: UNSW training
+  Read UNSW_NB15_training-set.csv: 175,341 rows
+Processing: UNSW official testing
+  Read UNSW_NB15_testing-set.csv: 82,332 rows
+Processing: CICIDS2017 eight days
+  Read Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv: 225,745 rows
+  Read Friday-WorkingHours-Afternoon-PortScan.pcap_ISCX.csv: 286,467 rows
+  Read Friday-WorkingHours-Morning.pcap_ISCX.csv: 191,033 rows
+  Read Monday-WorkingHours.pcap_ISCX.csv: 529,918 rows
+  Read Thursday-WorkingHours-Afternoon-Infilteration.pcap_ISCX.csv: 288,602 rows
+  Read Thursday-WorkingHours-Morning-WebAttacks.pcap_ISCX.csv: 170,366 rows
+  Read Tuesday-WorkingHours.pcap_ISCX.csv: 445,909 rows
+  Read Wednesday-workingHours.pcap_ISCX.csv: 692,703 rows
+Processing: TON_IoT network subset
+  Read train_test_network.csv: 211,043 rows
+SHARED FEATURE ALIGNMENT | PROJECT 11
+Features: duration_seconds, forward_packets, backward_packets
+CICIDS2017 microsecond duration converted to seconds (/ 1,000,000).
+No rows removed; blank/invalid feature values become NaN for later handling.
+No model training, split, imputation or duplicate cleaning performed here.
+Potential source-tool and packet accounting differences need documenting.
+
+UNSW training: 175,341 records; benign=56,000; attack=119,341; invalid common feature cells={'duration_seconds': 0, 'forward_packets': 0, 'backward_packets': 0}; output=data\processed\aligned\unsw_train.csv.gz
+UNSW official testing: 82,332 records; benign=37,000; attack=45,332; invalid common feature cells={'duration_seconds': 0, 'forward_packets': 0, 'backward_packets': 0}; output=data\processed\aligned\unsw_test.csv.gz
+CICIDS2017 eight days: 2,830,743 records; benign=2,273,097; attack=557,646; invalid common feature cells={'duration_seconds': 0, 'forward_packets': 0, 'backward_packets': 0}; output=data\processed\aligned\cicids2017.csv.gz
+TON_IoT network subset: 211,043 records; benign=50,000; attack=161,043; invalid common feature cells={'duration_seconds': 0, 'forward_packets': 0, 'backward_packets': 0}; output=data\processed\aligned\ton_iot.csv.gz
+Saved: D:\Projects\Security Analytics – Network Intrusion Detection\Security-Analytics-Network-Intrusion-Detection\results\reproduction\workspace\results\feature_alignment_summary.txt
+Running create_checkpoint_splits.py
+Scanned UNSW-NB15 official test
+Scanned CICIDS2017
+Scanned TON_IoT
+Verified UNSW-NB15 official test 82332 test rows
+Verified CICIDS2017 2830628 test rows
+Verified TON_IoT 211043 test rows
+   dataset      split    rows  attack  benign
+CICIDS2017      train       0       0       0
+CICIDS2017 validation       0       0       0
+CICIDS2017       test 2830628  557646 2272982
+   TON_IoT      train       0       0       0
+   TON_IoT validation       0       0       0
+   TON_IoT       test  211043  161043   50000
+ UNSW-NB15      train   68048   35851   32197
+ UNSW-NB15 validation   17018    8961    8057
+ UNSW-NB15       test   82332   45332   37000
+{
+  "seed": 42,
+  "validation_target": 0.2,
+  "candidate_group_splits": 256,
+  "original_rows": 3299459,
+  "kept_rows": 3209069,
+  "excluded_rows": 90390,
+  "direct_exact_training_exclusions": 90275,
+  "additional_group_training_exclusions": 0,
+  "eligible_development_rows": 85066,
+  "eligible_connected_groups": 75262,
+  "largest_eligible_group": 48,
+  "actual_validation_fraction": 0.2000564267745045,
+  "checks": {
+    "train_rows_matching_validation": 0,
+    "train_rows_matching_any_test": 0,
+    "near_groups_crossing_train_validation": 0,
+    "near_groups_crossing_development_official_test": 0,
+    "connected_groups_crossing_train_validation": 0
+  }
+}
+Running train_checkpoint_baseline.py
+D:\Projects\Security Analytics – Network Intrusion Detection\Security-Analytics-Network-Intrusion-Detection\results\reproduction\workspace\src\train_checkpoint_baseline.py:72: Pandas4Warning: The 'verify_integrity' keyword in DataFrame.set_index is deprecated and will be removed in a future version. Directly check the result.index.is_unique instead.
+  assignments = pd.read_csv(split_path).set_index("row_id", verify_integrity=True)
+D:\Projects\Security Analytics – Network Intrusion Detection\Security-Analytics-Network-Intrusion-Detection\results\reproduction\workspace\src\train_checkpoint_baseline.py:78: Pandas4Warning: The 'verify_integrity' keyword in DataFrame.set_index is deprecated and will be removed in a future version. Directly check the result.index.is_unique instead.
+  source = pd.read_csv(ALIGNED / "unsw_train.csv.gz").set_index("row_id", verify_integrity=True)
+Training Random Forest: 68,048 rows, ['duration_seconds', 'forward_packets', 'backward_packets']
+Training completed in 1.53 seconds
+Validation threshold: 0.9426192528735631; FPR=4.9895%
+Scored UNSW-NB15 official test: 82,332 rows; AUROC=0.7833
+Scored CICIDS2017: 2,830,628 rows; AUROC=0.5049
+Scored TON_IoT: 211,043 rows; AUROC=0.5169
+Running course checker with its default bootstrap counts; this can take several minutes.
+Done. Total elapsed: 6.80 minutes. See results/baseline/.
+Running build_checkpoint_results.py
+Wrote checkpoint results/plan Markdown, PDF and checker metrics JSON.

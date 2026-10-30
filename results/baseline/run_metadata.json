@@ -1,0 +1,137 @@
+{
+  "classifier": "RandomForestClassifier",
+  "parameters": {
+    "bootstrap": true,
+    "ccp_alpha": 0.0,
+    "class_weight": null,
+    "criterion": "gini",
+    "max_depth": null,
+    "max_features": "sqrt",
+    "max_leaf_nodes": null,
+    "max_samples": null,
+    "min_impurity_decrease": 0.0,
+    "min_samples_leaf": 2,
+    "min_samples_split": 2,
+    "min_weight_fraction_leaf": 0.0,
+    "monotonic_cst": null,
+    "n_estimators": 200,
+    "n_jobs": -1,
+    "oob_score": false,
+    "random_state": 42,
+    "verbose": 0,
+    "warm_start": false
+  },
+  "features": [
+    "duration_seconds",
+    "forward_packets",
+    "backward_packets"
+  ],
+  "preprocessing": "Aligned duration/packet counts; invalid rows excluded by finalized assignments. No scaling or imputation.",
+  "positive_label": 1,
+  "seed": 42,
+  "threshold": 0.9426192528735632,
+  "threshold_rule": "Lowest observed validation score threshold with empirical FPR <= 5%; ties kept together; finite above-max fallback.",
+  "fit_seconds": 2.0196646000258625,
+  "test_scoring_and_metrics_seconds": 68.62691589997848,
+  "hardware": {
+    "platform": "Windows-10-10.0.19045-SP0",
+    "processor": "AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD",
+    "logical_cpus": 12
+  },
+  "versions": {
+    "python": "3.13.7",
+    "numpy": "2.5.4",
+    "pandas": "3.1.0",
+    "scikit_learn": "1.9.1"
+  },
+  "split_sha256": "c643a217f2bdeabab240c6fbe61dc5209a8b309678c519fcfc14d5169ed0d2e0",
+  "validation": {
+    "rows": 17018,
+    "positive_rows": 8961,
+    "positive_fraction": 0.5265601128217182,
+    "random_AP": 0.5265601128217182,
+    "precision": 0.9249860048516514,
+    "recall": 0.5531748688762415,
+    "false_positive_rate": 0.04989450167556162,
+    "AP": 0.9258543936725063,
+    "AUROC": 0.9362003874386957,
+    "confusion_matrix": [
+      [
+        7655,
+        402
+      ],
+      [
+        4004,
+        4957
+      ]
+    ]
+  },
+  "tests": {
+    "UNSW-NB15 official test": {
+      "rows": 82332,
+      "positive_rows": 45332,
+      "positive_fraction": 0.5506000097167566,
+      "random_AP": 0.5506000097167566,
+      "precision": 0.7004598042123998,
+      "recall": 0.20835171622694784,
+      "false_positive_rate": 0.10916216216216217,
+      "AP": 0.7529763925810905,
+      "AUROC": 0.7832700741198271,
+      "confusion_matrix": [
+        [
+          32961,
+          4039
+        ],
+        [
+          35887,
+          9445
+        ]
+      ]
+    },
+    "CICIDS2017": {
+      "rows": 2830628,
+      "positive_rows": 557646,
+      "positive_fraction": 0.19700433967303368,
+      "random_AP": 0.19700433967303368,
+      "precision": 0.32199178092714215,
+      "recall": 0.30068179454349175,
+      "false_positive_rate": 0.15533163043086132,
+      "AP": 0.28286653586831867,
+      "AUROC": 0.5048327129003464,
+      "confusion_matrix": [
+        [
+          1919916,
+          353066
+        ],
+        [
+          389972,
+          167674
+        ]
+      ]
+    },
+    "TON_IoT": {
+      "rows": 211043,
+      "positive_rows": 161043,
+      "positive_fraction": 0.7630814573333397,
+      "random_AP": 0.7630814573333397,
+      "precision": 0.8627080865077612,
+      "recall": 0.5335469408791441,
+      "false_positive_rate": 0.27348,
+      "AP": 0.794304513434259,
+      "AUROC": 0.516921959041995,
+      "confusion_matrix": [
+        [
+          36326,
+          13674
+        ],
+        [
+          75119,
+          85924
+        ]
+      ]
+    }
+  },
+  "checker_status": "completed",
+  "total_seconds": 80.26255970000057,
+  "checker_seconds": 343.717968699988
+}
