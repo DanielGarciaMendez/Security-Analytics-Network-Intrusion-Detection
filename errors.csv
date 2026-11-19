@@ -1,0 +1,21 @@
+row_id,value,column,category
+unsw_test:UNSW_NB15_testing-set:74898,UNSW-NB15 official test,Random Forest,Forward-heavy or balanced bidirectional
+unsw_test:UNSW_NB15_testing-set:41861,UNSW-NB15 official test,Random Forest,Single-packet with no reply
+unsw_test:UNSW_NB15_testing-set:38859,UNSW-NB15 official test,Random Forest,Forward-heavy or balanced bidirectional
+unsw_test:UNSW_NB15_testing-set:77139,UNSW-NB15 official test,Random Forest,Forward-heavy or balanced bidirectional
+unsw_test:UNSW_NB15_testing-set:67684,UNSW-NB15 official test,Random Forest,Forward-heavy or balanced bidirectional
+unsw_test:UNSW_NB15_testing-set:67209,UNSW-NB15 official test,Random Forest,Forward-heavy or balanced bidirectional
+unsw_test:UNSW_NB15_testing-set:66815,UNSW-NB15 official test,Random Forest,Forward-heavy or balanced bidirectional
+unsw_test:UNSW_NB15_testing-set:42339,UNSW-NB15 official test,Random Forest,Single-packet with no reply
+unsw_test:UNSW_NB15_testing-set:77060,UNSW-NB15 official test,Random Forest,Single-packet with no reply
+unsw_test:UNSW_NB15_testing-set:41730,UNSW-NB15 official test,Random Forest,Forward-heavy or balanced bidirectional
+unsw_test:UNSW_NB15_testing-set:971,UNSW-NB15 official test,Random Forest,Reverse-heavy bidirectional
+unsw_test:UNSW_NB15_testing-set:16556,UNSW-NB15 official test,Random Forest,Multiple packets with no reply
+unsw_test:UNSW_NB15_testing-set:58980,UNSW-NB15 official test,Random Forest,Multiple packets with no reply
+unsw_test:UNSW_NB15_testing-set:13104,UNSW-NB15 official test,Random Forest,Multiple packets with no reply
+unsw_test:UNSW_NB15_testing-set:12979,UNSW-NB15 official test,Random Forest,Multiple packets with no reply
+unsw_test:UNSW_NB15_testing-set:16964,UNSW-NB15 official test,Random Forest,Multiple packets with no reply
+unsw_test:UNSW_NB15_testing-set:3986,UNSW-NB15 official test,Random Forest,Forward-heavy or balanced bidirectional
+unsw_test:UNSW_NB15_testing-set:44536,UNSW-NB15 official test,Random Forest,Multiple packets with no reply
+unsw_test:UNSW_NB15_testing-set:65589,UNSW-NB15 official test,Random Forest,Forward-heavy or balanced bidirectional
+unsw_test:UNSW_NB15_testing-set:12755,UNSW-NB15 official test,Random Forest,Multiple packets with no reply

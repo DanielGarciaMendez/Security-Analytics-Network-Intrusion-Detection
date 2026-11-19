@@ -27,6 +27,7 @@ from sklearn.metrics import (ConfusionMatrixDisplay, average_precision_score,
                              confusion_matrix, roc_auc_score, roc_curve)
 
 from preview_checkpoint_splits import FEATURES, TESTS, valid_feature_matrix
+from prepare_final_scores import LEGACY_SCORES
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "results/baseline"
@@ -64,6 +65,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run-checker", action="store_true", help="Also run the course checker after scoring")
     args = parser.parse_args()
+    if (ROOT / LEGACY_SCORES).exists():
+        parser.error("Run training in a separate workspace to preserve the published scores and their metadata.")
     started = perf_counter()
     OUT.mkdir(parents=True, exist_ok=True)
     model_dir = ROOT / "models"
@@ -105,7 +108,7 @@ def main():
                   "score": validation_scores}).to_csv(OUT / "validation_scores.csv.gz", index=False)
     joblib.dump({"model": model, "features": FEATURES, "threshold": threshold,
                  "positive_label": 1}, model_dir / "random_forest.joblib", compress=3)
-    scores_path = ROOT / "scores.csv.gz"
+    scores_path = OUT / "test_scores_legacy.csv.gz"
     test_index = assignments[assignments.split == "test"]
     seen = set()
     test_metrics = {}

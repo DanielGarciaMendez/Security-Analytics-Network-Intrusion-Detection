@@ -1,0 +1,93 @@
+split.csv: 3209069 rows. scores.csv: 3124003 rows, 3 value(s), 1 column(s).
+Values: UNSW-NB15 official test, CICIDS2017, TON_IoT
+
+Rows per dataset and split
+--------------------------
+   dataset      split    rows  positive  negative  positive %
+CICIDS2017       test 2830628    557646   2272982       19.70
+   TON_IoT       test  211043    161043     50000       76.31
+ UNSW-NB15      train   68048     35851     32197       52.68
+ UNSW-NB15 validation   17018      8961      8057       52.66
+ UNSW-NB15       test   82332     45332     37000       55.06
+
+Metrics per value and column (positive when score >= the threshold)
+-------------------------------------------------------------------
+Each value is followed by its 95% bootstrap interval in brackets.
+
+Value: UNSW-NB15 official test   Column: Random Forest
+  threshold                 0.942619
+  test rows                 82332
+  positive rows             45332 (55.06%)
+  negative rows             37000 (44.94%)
+  bootstrap resamples       1000
+  random-scorer AP          0.5506 (equals the positive share)
+  random-scorer AUROC       0.5000
+  precision                 0.7005 [0.6932, 0.7082]
+  recall                    0.2084 [0.2051, 0.2121]
+  false-positive rate       0.1092 [0.1061, 0.1122]
+  AP                        0.7530 [0.7488, 0.7570]
+  AUROC                     0.7833 [0.7797, 0.7866]
+
+Value: CICIDS2017   Column: Random Forest
+  threshold                 0.942619
+  test rows                 2830628
+  positive rows             557646 (19.70%)
+  negative rows             2272982 (80.30%)
+  bootstrap resamples       200
+  random-scorer AP          0.1970 (equals the positive share)
+  random-scorer AUROC       0.5000
+  precision                 0.3220 [0.3208, 0.3231]
+  recall                    0.3007 [0.2996, 0.3018]
+  false-positive rate       0.1553 [0.1548, 0.1558]
+  AP                        0.2829 [0.2819, 0.2839]
+  AUROC                     0.5048 [0.5040, 0.5057]
+
+Value: TON_IoT   Column: Random Forest
+  threshold                 0.942619
+  test rows                 211043
+  positive rows             161043 (76.31%)
+  negative rows             50000 (23.69%)
+  bootstrap resamples       200
+  random-scorer AP          0.7631 (equals the positive share)
+  random-scorer AUROC       0.5000
+  precision                 0.8627 [0.8608, 0.8649]
+  recall                    0.5335 [0.5313, 0.5360]
+  false-positive rate       0.2735 [0.2692, 0.2777]
+  AP                        0.7943 [0.7921, 0.7963]
+  AUROC                     0.5169 [0.5144, 0.5195]
+
+Results table: AUROC [95% interval] (copy into section 1(d))
+------------------------------------------------------------
+A one-class cell holds the metric the checker prints for it, named in parentheses.
+
+Column: Random Forest
+  UNSW-NB15 official test   0.7833 [0.7797, 0.7866]
+  CICIDS2017                0.5048 [0.5040, 0.5057]
+  TON_IoT                   0.5169 [0.5144, 0.5195]
+
+Difference from the baseline value 'UNSW-NB15 official test' (copy into section 1(e))
+-------------------------------------------------------------------------------------
+Difference = the value's metric minus the baseline value's metric in the same column.
+Direction of interest: lower. Change = the difference with its sign flipped, so a drop is positive.
+The verdict in section 1(e) compares the change with your yes and no differences.
+
+Column: Random Forest
+  CICIDS2017                difference -0.2784   change +0.2784 (AUROC)
+  TON_IoT                   difference -0.2663   change +0.2663 (AUROC)
+
+Error sample (section 4)
+------------------------
+Value: UNSW-NB15 official test   Column: Random Forest
+  misclassified rows available   4039 false positives, 35887 false negatives
+  sampled                        10 false positives, 10 false negatives
+
+error                                    false positive  false negative  total
+category                                                                      
+Forward-heavy or balanced bidirectional               7               2      9
+Multiple packets with no reply                        0               7      7
+Single-packet with no reply                           3               0      3
+Reverse-heavy bidirectional                           0               1      1
+
+Warnings
+--------
+None.

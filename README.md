@@ -53,7 +53,7 @@ package versions; `requirements.txt` is the shorter, unpinned dependency list.
 ## Main workflow
 
 After installing dependencies and placing the eleven raw CSVs in the paths above,
-run this command from the repository root:
+run this command in a separate workspace without the published score archive:
 
 ```powershell
 .\.venv\Scripts\python.exe src\run_checkpoint.py
@@ -61,7 +61,7 @@ run this command from the repository root:
 
 It runs the checkpoint audit, feature alignment, final splits, Random Forest,
 course checker, and report generation, in that order. It writes `split.csv.gz`
-and `scores.csv.gz` at the repository root. It rebuilds generated results and
+at the repository root and `results/baseline/test_scores_legacy.csv.gz`. It rebuilds generated results and
 the saved model; raw CSVs remain unchanged. XGBoost is not implemented yet.
 
 The remaining commands below run individual stages or optional investigations.
@@ -123,16 +123,70 @@ Read [the final counts and split policy](results/splits/section_2c_final.md).
 `section_2c_preview.md` contains historical pre-split estimates; use the final report for actual counts.
 
 
+## Final checkpoint scores
+
+From the repository root, convert the saved Random Forest predictions:
+
 ```powershell
-.\.venv\Scripts\python.exe check_checkpoint.py --split split.csv.gz --scores scores.csv.gz --threshold 0.9426192528735632
+.\.venv\Scripts\python.exe src\prepare_final_scores.py
 ```
 
-This is the threshold for the saved baseline. After retraining, use the new
-validation-selected value in `results/baseline/checker_command.txt`.
+The script validates every prediction against `split.csv.gz`, writes
+`final_scores.csv.gz`, and publishes the verified file as `scores.csv.gz`.
+It preserves the original gzip as `scores_legacy.csv.gz` and uses that archive
+on subsequent runs. The threshold comes from `results/baseline/run_metadata.json`.
+
+## Final checkpoint error analysis
+
+With the saved final scores, split, and raw and aligned UNSW-NB15 test files in
+place, run from the repository root:
+
+```powershell
+.\.venv\Scripts\python.exe src\prepare_final_errors.py
+```
+
+This regenerates `errors.csv` and the
+[seed-42 error analysis](results/final_checkpoint/error_analysis.md). To validate
+the sample with the professor's final checker, supply
+`--split split.csv.gz --scores scores.csv.gz --errors errors.csv`.
+
+## Final checkpoint main comparison
+
+With the professor's `check_final_checkpoint.py` at the repository root, run:
+
+```powershell
+.\.venv\Scripts\python.exe check_final_checkpoint.py --split split.csv.gz --scores scores.csv.gz --errors errors.csv --metric auroc --reference "UNSW-NB15 official test" --direction lower
+```
+
+If the checker is in Downloads, substitute its full path for
+`check_final_checkpoint.py`. The complete run is saved in
+[final checker output](results/final_checkpoint/final_checker_output.txt).
+See the [main comparison](results/final_checkpoint/main_comparison.md) for the
+AUROC results, baseline changes, and decision-rule provenance.
+
+## Final checkpoint figure
+
+Regenerate the figure and its caption from the saved final checker output:
+
+```powershell
+.\.venv\Scripts\python.exe src\make_final_checkpoint_figure.py
+```
+
+See the [AUROC plot](results/final_checkpoint/auroc_comparison.png),
+[caption and finding](results/final_checkpoint/figure_caption.md), and
+[figure summary](results/final_checkpoint/figure_summary.md).
+
+## Earlier checkpoint checker
+
+Use the archive when running the earlier checker:
+
+```powershell
+.\.venv\Scripts\python.exe check_checkpoint.py --split split.csv.gz --scores scores_legacy.csv.gz --threshold 0.9426192528735632
+```
 
 ## Random Forest baseline
 
-Train on finalized assignments, select the lowest validation score threshold with
+In a separate workspace, train on finalized assignments, select the lowest validation score threshold with
 an empirical false-positive rate at most 5%, and score each retained test row:
 
 ```powershell
@@ -141,11 +195,11 @@ an empirical false-positive rate at most 5%, and score each retained test row:
 
 Uses 200 trees, `min_samples_leaf=2`, seed 42, and all available CPU cores.
 There is no scaling, imputation, or refitting on validation. Test data does not
-select the model settings or threshold. The script writes `scores.csv.gz`,
+select the model settings or threshold. The script writes `results/baseline/test_scores_legacy.csv.gz`,
 `models/random_forest.joblib`, and `results/baseline/` with validation scores,
 timing, versions, point metrics, a confusion matrix, and a preliminary report.
 
-The course checker is a separate next step. Use the exact command saved in
+For a new training run, use the checker command generated in
 `results/baseline/checker_command.txt`; the default training run does not execute
 it. For a complete rerun including the checker, add `--run-checker`.
 The checker's metrics and confidence intervals supply the checkpoint numbers.

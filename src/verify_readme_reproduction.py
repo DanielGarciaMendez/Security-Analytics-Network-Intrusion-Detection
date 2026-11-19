@@ -19,6 +19,8 @@ import numpy as np
 import pandas as pd
 import joblib
 
+from prepare_final_scores import LEGACY_SCORES
+
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "results/reproduction"
 
@@ -75,8 +77,14 @@ def main():
     new_threshold = rebuilt_metadata["threshold"]
     if abs(old_threshold - new_threshold) > 1e-12:
         raise AssertionError("Validation threshold changed materially")
-    first = pd.read_csv(ROOT / "scores.csv.gz", chunksize=100_000)
-    second = pd.read_csv(workspace / "scores.csv.gz", chunksize=100_000)
+    original_scores = ROOT / LEGACY_SCORES
+    if not original_scores.exists():
+        original_scores = ROOT / "scores.csv.gz"
+    rebuilt_scores = workspace / "results/baseline/test_scores_legacy.csv.gz"
+    if not rebuilt_scores.exists():
+        rebuilt_scores = workspace / "scores.csv.gz"
+    first = pd.read_csv(original_scores, chunksize=100_000)
+    second = pd.read_csv(rebuilt_scores, chunksize=100_000)
     for old, new in zip(first, second, strict=True):
         pd.testing.assert_frame_equal(old.drop(columns="score"), new.drop(columns="score"))
         np.testing.assert_allclose(old.score, new.score, rtol=0, atol=1e-12)

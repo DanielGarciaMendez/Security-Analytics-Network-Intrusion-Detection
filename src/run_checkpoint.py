@@ -3,10 +3,14 @@ from pathlib import Path
 import subprocess
 import sys
 
+from prepare_final_scores import LEGACY_SCORES
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
 def main():
+    if (ROOT / LEGACY_SCORES).exists():
+        sys.exit("Run the rebuild in a separate workspace to preserve the published scores and their split.")
     for script, args in [
         ("auditoverview2b.py", []),
         ("prepare_shared_features.py", []),
